@@ -1,11 +1,15 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import authService from "../services/authService";
+import axiosInstance from "../services/axiosInstance";
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  const navigate = useNavigate();
 
   const login = async (userData) => {
     setIsLoading(true);
@@ -34,10 +38,26 @@ const AuthProvider = ({ children }) => {
     window.location.href = "/login";
   };
 
-  const isTokenExpired = (token) => {
-    const payload = JSON.parse(atob(token.split(".")[1]));
-    const expirationTime = payload.exp * 1000;
-    return Date.now() > expirationTime;
+  // const isTokenExpired = (token) => {
+  //   const payload = JSON.parse(atob(token.split(".")[1]));
+  //   const expirationTime = payload.exp * 1000;
+  //   return Date.now() > expirationTime;
+  // };
+
+  const addCarToLocalStorage = (carId) => {
+    localStorage.setItem("testDriveCarId", carId);
+    navigate("/test-drive-form");
+  };
+
+  const submitTestDriveForm = async (formData) => {
+    const carId = localStorage.getItem("testDriveCarId");
+    if (!carId) {
+      throw new Error("No car selected for test drive");
+    }
+    const data = { ...formData, carId };
+    const response = await axiosInstance.post("/api/v1/test-drive", data);
+    localStorage.removeItem("testDriveCarId"); // Remove the car ID from local storage
+    return response;
   };
 
   return (
@@ -49,6 +69,8 @@ const AuthProvider = ({ children }) => {
         logout,
         isLoading,
         setIsLoading,
+        addCarToLocalStorage,
+        submitTestDriveForm,
       }}
     >
       {children}

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../Context/AuthContext";
 
 // Base icons
 import dummycar from "../Assets/car icons/dummycar.svg";
@@ -9,6 +10,8 @@ export default function CarGallery({ carData }) {
   const [currentImage, setCurrentImage] = useState(0);
   const [features, setFeatures] = useState([]);
   const [details, setDetails] = useState([]);
+
+  const {addCarToLocalStorage} = useContext(AuthContext);
 
   // Load icons and process data
   useEffect(() => {
@@ -89,7 +92,7 @@ export default function CarGallery({ carData }) {
         </h1>
         <div className="action-buttons">
           <button className="btn">Buy Now</button>
-          <button className="btn">Test Drive</button>
+          <button className="btn" onClick={() => addCarToLocalStorage(carData._id)}>Test Drive</button>
           <button className="btn">Contact us</button>
         </div>
       </header>

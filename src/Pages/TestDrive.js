@@ -1,12 +1,35 @@
-import React from "react";
+import React, { useEffect, useContext, useState } from "react";
+import axiosInstance from "../services/axiosInstance"; // Adjust path as needed
 
 import Navbar from "../Components/Navbar";
 import SecondaryHero from "../Components/SecondaryHero";
 import Footer from "../Components/Footer";
 import secondaryHero2 from "../Assets/images/secondaryHero2.jpg";
 import Cars from "../Components/Cars";
+import { AuthContext } from "../Context/AuthContext";
 
 export default function TestDrive() {
+  const { setIsLoading } = useContext(AuthContext);
+  const [cars, setCars] = useState([]);
+
+  useEffect(() => {
+    const fetchCars = async () => {
+      setIsLoading(true);
+      try {
+        const response = await axiosInstance.get("/api/v1/cars/test-drive", {
+          params: { testDrive: "true" },
+        });
+        setCars(response.data || []);
+      } catch (err) {
+        console.error("Error fetching cars:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchCars();
+  }, [setIsLoading]);
+
   return (
     <>
       <Navbar />
@@ -21,7 +44,7 @@ export default function TestDrive() {
       />
       <section className="testDrivePageSec">
         <h2 className="testDriveMainHeading">Test Drive</h2>
-        <Cars />
+        <Cars cars={cars} />
       </section>
       <Footer />
     </>
