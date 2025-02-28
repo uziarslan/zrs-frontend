@@ -6,19 +6,21 @@
 /* Filter icon for mobile (< 768px) */
 .filter-icon {
     display: none;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     cursor: pointer;
     padding: 10px;
-    background: #f5f5f5;
+    background: #4d6bfe;
     border-radius: 8px;
     margin-bottom: 10px;
     width: fit-content;
     transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.filter-icon:hover {
-    background-color: #e0e0e0;
-    transform: scale(1.05);
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200000;
+    align-items: center;
+    color: white;
 }
 
 /* Wrapper for the entire filter container */
@@ -353,7 +355,7 @@
 /* Mobile devices (max-width: 768px) */
 @media screen and (max-width: 768px) {
     .filter-icon {
-        display: block;
+        display: flex;
     }
 
     .filters-wrapper {
@@ -447,9 +449,8 @@
     max-width: 1440px;
     margin: 0 auto;
     margin-top: 200px;
-    align-items: flex-start;
+    padding: 0px 20px;
 }
-
 
 .selected-companies {
     margin-top: 10px;
@@ -484,10 +485,9 @@
 @media screen and (max-width: 1024px) {
     .filteredSearchSection {
         gap: 50px;
-        margin-top: 150px;
+        margin-top: 200px;
     }
 }
-
 
 /* Mobile devices (max-width: 768px) */
 @media screen and (max-width: 768px) {

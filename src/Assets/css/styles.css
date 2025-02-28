@@ -372,6 +372,14 @@
     justify-content: center;
 }
 
+.carRenderCardHolder {
+    display: inline-grid;
+    grid-template-columns: repeat(2, 460px);
+    gap: 32px;
+    width: 100%;
+    max-width: 100%;
+}
+
 .cardBody {
     min-height: 450px;
     height: 634px;
@@ -388,6 +396,24 @@
     min-width: 380px;
     text-decoration: none;
     color: inherit;
+    max-width: 460px;
+}
+
+.cardBodyRender {
+    min-height: 450px;
+    height: 634px;
+    border-radius: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 17.5px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-decoration: none;
+    color: inherit;
+    max-width: 460px;
 }
 
 .cardHeader {
@@ -433,7 +459,7 @@
     color: white;
 }
 
-.badgeContainer.sold{
+.badgeContainer.sold {
     background: #FF0004;
     padding: 12px 55px;
 }
@@ -1804,6 +1830,24 @@ h2 {
 }
 
 
+
+
+@media(max-width: 1200px) {
+    .formGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .imagePreview,
+    .addImage {
+        width: 200px;
+        height: 200px;
+    }
+
+    .carRenderCardHolder {
+        grid-template-columns: repeat(2, 380px);
+    }
+}
+
 @media (max-width: 1024px) {
     .contactusHeading {
         font-size: 3rem;
@@ -1826,17 +1870,13 @@ h2 {
         width: 100%;
         max-width: 100%;
     }
-}
 
-@media(max-width: 1200px) {
-    .formGrid {
-        grid-template-columns: repeat(2, 1fr);
+    .cardBodyRender {
+        max-width: 100%;
     }
 
-    .imagePreview,
-    .addImage {
-        width: 200px;
-        height: 200px;
+    .carRenderCardHolder {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -1900,7 +1940,7 @@ h2 {
         padding: 15px;
     }
 
-    .carDesHeader{
+    .carDesHeader {
         flex-wrap: wrap;
         gap: 20px;
     }
@@ -2133,35 +2173,36 @@ h2 {
         align-items: center;
     }
 
-    .main-image{
+    .main-image {
         height: 400px;
     }
 
-    .cardHeading{
+    .cardHeading {
         font-size: 1rem;
     }
 
-    .cardDetail{
+    .cardDetail {
         font-size: 1rem;
     }
 
-    .carIconContainer{
+    .carIconContainer {
         width: 90px;
     }
 
-    .btn{
+    .btn {
         font-size: 1rem;
     }
-    .gallery-container{
+
+    .gallery-container {
         margin-top: 150px;
     }
 
-    .carDescriptionSingle{
+    .carDescriptionSingle {
         font-size: 1rem;
         line-height: 25px;
     }
 
-    .aboutUsSection{
+    .aboutUsSection {
         border-top-left-radius: 40px;
         border-top-right-radius: 40px;
     }

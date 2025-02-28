@@ -1,11 +1,9 @@
 import React, { useEffect, useContext, useState } from "react";
 import Navbar from "../Components/Navbar";
-import SecondaryHero from "../Components/SecondaryHero";
-import secondaryHero3 from "../Assets/images/secondaryHero3.jpg";
 import { AuthContext } from "../Context/AuthContext";
 import CarFilters from "../Components/CarFilters";
-import Cars from "../Components/Cars";
 import axiosInstance from "../services/axiosInstance";
+import CarRender from "../Components/CarsRender";
 
 const Buy = () => {
   const { setIsLoading } = useContext(AuthContext);
@@ -198,7 +196,7 @@ const Buy = () => {
           onReset={resetFilters}
           onYearBuiltChange={handleYearBuiltChange}
         />
-        <Cars cars={cars} />
+        <CarRender cars={cars} />
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const CarFilters = ({
   mileage,
@@ -7,7 +7,7 @@ const CarFilters = ({
   selectedCompanies,
   selectedBodyTypes,
   availableNow,
-  selectedVehicleType, // Updated from selectedModel
+  selectedVehicleType,
   carCompanies,
   prefixedCompanies,
   bodyTypes,
@@ -17,7 +17,7 @@ const CarFilters = ({
   onCompanyChange,
   onBodyTypeChange,
   onAvailabilityChange,
-  onVehicleTypeChange, // Updated from onModelChange
+  onVehicleTypeChange,
   onSearch,
   onReset,
   onYearBuiltChange,
@@ -40,6 +40,8 @@ const CarFilters = ({
     availability: false,
   });
 
+  const filtersWrapperRef = useRef(null); // Ref for the filters container
+
   useEffect(() => {
     const handleResize = () => {
       const isMobileWidth = window.innerWidth < 768;
@@ -53,7 +55,19 @@ const CarFilters = ({
   }, []);
 
   const toggleContainer = () => {
-    setIsContainerOpen((prev) => !prev);
+    setIsContainerOpen((prev) => {
+      const willOpen = !prev;
+      // Scroll to filters only when opening on mobile
+      if (willOpen && isMobile) {
+        setTimeout(() => {
+          filtersWrapperRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }, 100); // Small timeout to ensure DOM update
+      }
+      return willOpen;
+    });
   };
 
   const toggleFilter = (section) => {
@@ -69,8 +83,8 @@ const CarFilters = ({
     ? selectedCompanies.length === 0
       ? vehicleTypes
       : vehicleTypes.filter((vt) =>
-          selectedCompanies.includes(vt.manufacturer.brandName)
-        )
+        selectedCompanies.includes(vt.manufacturer.brandName)
+      )
     : [];
 
   return (
@@ -91,7 +105,10 @@ const CarFilters = ({
           Filters <i className="bx bx-filter-alt"></i>
         </div>
       )}
-      <div className={`filters-wrapper ${isContainerOpen ? "open" : "closed"}`}>
+      <div
+        className={`filters-wrapper ${isContainerOpen ? "open" : "closed"}`}
+        ref={filtersWrapperRef} // Attach the ref here
+      >
         <div className="filters-container">
           <h2 className="filters-title">Find your dream car</h2>
 
@@ -99,16 +116,19 @@ const CarFilters = ({
           <div className="filter-section">
             <h3
               className="filter-title"
-              onClick={() => toggleFilter("company")}
-              aria-expanded={isOpen.company}
+              onClick={isMobile ? () => toggleFilter("company") : undefined}
+              aria-expanded={isMobile ? isOpen.company : true}
             >
               Company
-              <span className="collapse-toggle">
-                {isOpen.company ? " ▼" : " ▶"}
-              </span>
+              {isMobile && (
+                <span className="collapse-toggle">
+                  {isOpen.company ? " ▼" : " ▶"}
+                </span>
+              )}
             </h3>
             <div
-              className={`filter-content ${isOpen.company ? "open" : "closed"}`}
+              className={`filter-content ${isMobile ? (isOpen.company ? "open" : "closed") : "open"
+                }`}
             >
               <div className="checkbox-group">
                 {allCompanies.map((company) => (
@@ -160,27 +180,30 @@ const CarFilters = ({
             </div>
           </div>
 
-          {/* Vehicle Type Filter (replacing Model) */}
+          {/* Vehicle Type Filter */}
           <div className="filter-section">
             <h3
               className="filter-title"
-              onClick={() => toggleFilter("model")}
-              aria-expanded={isOpen.model}
+              onClick={isMobile ? () => toggleFilter("model") : undefined}
+              aria-expanded={isMobile ? isOpen.model : true}
             >
               Vehicle Types
-              <span className="collapse-toggle">
-                {isOpen.model ? " ▼" : " ▶"}
-              </span>
+              {isMobile && (
+                <span className="collapse-toggle">
+                  {isOpen.model ? " ▼" : " ▶"}
+                </span>
+              )}
             </h3>
             <div
-              className={`filter-content ${isOpen.model ? "open" : "closed"}`}
+              className={`filter-content ${isMobile ? (isOpen.model ? "open" : "closed") : "open"
+                }`}
             >
               <select
                 className="model-select"
                 value={selectedVehicleType}
                 onChange={(e) => onVehicleTypeChange(e.target.value)}
               >
-                <option value="">Select vehcile type</option>
+                <option value="">Select vehicle type</option>
                 {Array.isArray(filteredVehicleTypes) &&
                   filteredVehicleTypes.map((vt) => (
                     <option key={vt._id} value={vt._id}>
@@ -195,16 +218,19 @@ const CarFilters = ({
           <div className="filter-section">
             <h3
               className="filter-title"
-              onClick={() => toggleFilter("mileage")}
-              aria-expanded={isOpen.mileage}
+              onClick={isMobile ? () => toggleFilter("mileage") : undefined}
+              aria-expanded={isMobile ? isOpen.mileage : true}
             >
               Mileage
-              <span className="collapse-toggle">
-                {isOpen.mileage ? " ▼" : " ▶"}
-              </span>
+              {isMobile && (
+                <span className="collapse-toggle">
+                  {isOpen.mileage ? " ▼" : " ▶"}
+                </span>
+              )}
             </h3>
             <div
-              className={`filter-content ${isOpen.mileage ? "open" : "closed"}`}
+              className={`filter-content ${isMobile ? (isOpen.mileage ? "open" : "closed") : "open"
+                }`}
             >
               <div className="slider-container">
                 <input
@@ -240,18 +266,19 @@ const CarFilters = ({
           <div className="filter-section">
             <h3
               className="filter-title"
-              onClick={() => toggleFilter("yearBuilt")}
-              aria-expanded={isOpen.yearBuilt}
+              onClick={isMobile ? () => toggleFilter("yearBuilt") : undefined}
+              aria-expanded={isMobile ? isOpen.yearBuilt : true}
             >
               Year Built
-              <span className="collapse-toggle">
-                {isOpen.yearBuilt ? " ▼" : " ▶"}
-              </span>
+              {isMobile && (
+                <span className="collapse-toggle">
+                  {isOpen.yearBuilt ? " ▼" : " ▶"}
+                </span>
+              )}
             </h3>
             <div
-              className={`filter-content ${
-                isOpen.yearBuilt ? "open" : "closed"
-              }`}
+              className={`filter-content ${isMobile ? (isOpen.yearBuilt ? "open" : "closed") : "open"
+                }`}
             >
               <div className="range-inputs">
                 <input
@@ -277,18 +304,19 @@ const CarFilters = ({
           <div className="filter-section">
             <h3
               className="filter-title"
-              onClick={() => toggleFilter("bodyType")}
-              aria-expanded={isOpen.bodyType}
+              onClick={isMobile ? () => toggleFilter("bodyType") : undefined}
+              aria-expanded={isMobile ? isOpen.bodyType : true}
             >
               Body Type
-              <span className="collapse-toggle">
-                {isOpen.bodyType ? " ▼" : " ▶"}
-              </span>
+              {isMobile && (
+                <span className="collapse-toggle">
+                  {isOpen.bodyType ? " ▼" : " ▶"}
+                </span>
+              )}
             </h3>
             <div
-              className={`filter-content ${
-                isOpen.bodyType ? "open" : "closed"
-              }`}
+              className={`filter-content ${isMobile ? (isOpen.bodyType ? "open" : "closed") : "open"
+                }`}
             >
               <div className="checkbox-group">
                 {bodyTypes.map((type) => (
@@ -312,18 +340,19 @@ const CarFilters = ({
           <div className="filter-section">
             <h3
               className="filter-title"
-              onClick={() => toggleFilter("installment")}
-              aria-expanded={isOpen.installment}
+              onClick={isMobile ? () => toggleFilter("installment") : undefined}
+              aria-expanded={isMobile ? isOpen.installment : true}
             >
               Max Monthly Installment
-              <span className="collapse-toggle">
-                {isOpen.installment ? " ▼" : " ▶"}
-              </span>
+              {isMobile && (
+                <span className="collapse-toggle">
+                  {isOpen.installment ? " ▼" : " ▶"}
+                </span>
+              )}
             </h3>
             <div
-              className={`filter-content ${
-                isOpen.installment ? "open" : "closed"
-              }`}
+              className={`filter-content ${isMobile ? (isOpen.installment ? "open" : "closed") : "open"
+                }`}
             >
               <div className="slider-container">
                 <input
@@ -359,18 +388,19 @@ const CarFilters = ({
           <div className="filter-section">
             <h3
               className="filter-title"
-              onClick={() => toggleFilter("availability")}
-              aria-expanded={isOpen.availability}
+              onClick={isMobile ? () => toggleFilter("availability") : undefined}
+              aria-expanded={isMobile ? isOpen.availability : true}
             >
               Availability
-              <span className="collapse-toggle">
-                {isOpen.availability ? " ▼" : " ▶"}
-              </span>
+              {isMobile && (
+                <span className="collapse-toggle">
+                  {isOpen.availability ? " ▼" : " ▶"}
+                </span>
+              )}
             </h3>
             <div
-              className={`filter-content ${
-                isOpen.availability ? "open" : "closed"
-              }`}
+              className={`filter-content ${isMobile ? (isOpen.availability ? "open" : "closed") : "open"
+                }`}
             >
               <label className="checkbox-label">
                 <input
