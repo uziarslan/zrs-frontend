@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../Assets/images/logo.png";
+import logo from "../Assets/images/logo2.png";
 import location from "../Assets/icons/location.svg";
 import phone from "../Assets/icons/phone.svg";
 import youtube from "../Assets/icons/youtube.svg";

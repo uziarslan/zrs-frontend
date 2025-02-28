@@ -151,16 +151,28 @@ export default function Cars({ cars }) {
             >
               <div className="cardHeader">
                 <div className="badgeContainerWrapper">
-                  {car.featured === "yes" && (
-                    <div className="badgeContainer featured">
-                      <p>FEATURED</p>
-                    </div>
-                  )}
-                  {car.testDrive === "yes" && (
-                    <div className="badgeContainer test">
-                      <p>TEST DRIVE</p>
-                    </div>
-                  )}
+                  {
+                    car.saleStatus !== "sold" ? (
+                      <>
+                      {car.featured === "yes" && (
+                        <div className="badgeContainer featured">
+                          <p>FEATURED</p>
+                        </div>
+                      )}
+                      {car.testDrive === "yes" && (
+                        <div className="badgeContainer test">
+                          <p>TEST DRIVE</p>
+                        </div>
+                      )}
+                      </>
+                    ): (
+                      car.saleStatus === "sold" && (
+                        <div className="badgeContainer sold">
+                          <p>SOLD</p>
+                        </div>
+                      )
+                    )
+                  }      
                 </div>
                 <div className="carVerticalButtons">
                   <button className="cardctaButton" type="button">

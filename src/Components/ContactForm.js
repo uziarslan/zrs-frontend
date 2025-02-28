@@ -1,15 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
+import axiosInstance from "../services/axiosInstance";
 import phonefill from "../Assets/icons/phonefill.svg";
 import envolopefill from "../Assets/icons/envolopefill.svg";
 import locationfill from "../Assets/icons/locationfill.svg";
 
 export default function ContactForm() {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    mobileNumber: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axiosInstance.post("/api/v1/contact-us", formData);
+      alert("Message sent successfully!");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        mobileNumber: "",
+        message: "",
+      });
+    } catch (err) {
+      console.error("Error sending message:", err);
+      alert("Failed to send message.");
+    }
+  };
+
   return (
     <>
       <section className="contactFormSection">
         <h2 className="contactusHeading">Contact us</h2>
         <div className="completePage">
-          <form className="contactFormWrapper">
+          <form className="contactFormWrapper" onSubmit={handleSubmit}>
             <div className="companyContactDetails">
               <div className="iconAndInfo">
                 <img src={phonefill} alt="Contact Number" />
@@ -34,8 +69,12 @@ export default function ContactForm() {
                   </label>
                   <input
                     id="firstName"
+                    name="firstName"
                     type="text"
                     placeholder="Enter Your First Name"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    required
                   />
                 </div>
                 <div className="formGroup">
@@ -44,8 +83,12 @@ export default function ContactForm() {
                   </label>
                   <input
                     id="lastName"
+                    name="lastName"
                     type="text"
                     placeholder="Enter Your Last Name"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    required
                   />
                 </div>
                 <div className="formGroup">
@@ -54,8 +97,12 @@ export default function ContactForm() {
                   </label>
                   <input
                     id="email"
+                    name="email"
                     type="email"
                     placeholder="Enter Your Email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
                   />
                 </div>
                 <div className="formGroup">
@@ -64,8 +111,12 @@ export default function ContactForm() {
                   </label>
                   <input
                     id="mobileNumber"
+                    name="mobileNumber"
                     type="tel"
                     placeholder="Enter Your Mobile Number"
+                    value={formData.mobileNumber}
+                    onChange={handleChange}
+                    required
                   />
                 </div>
               </div>
@@ -75,7 +126,11 @@ export default function ContactForm() {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   placeholder="Write Your Message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
                 ></textarea>
               </div>
               <button type="submit">Submit</button>

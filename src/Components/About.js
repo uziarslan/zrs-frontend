@@ -18,7 +18,7 @@ export default function About() {
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry.
             </p>
-            <Link className="aboutUsCta">
+            <Link to="/test-drive" className="aboutUsCta">
               <p>Book a Test Drive</p>
               <div className="greenBg">
                 <img src={arrowsm} alt="Arrow Icon" />

@@ -26,8 +26,12 @@ export default function Navbar({ page }) {
           >
             Finance
           </Link>
+          <Link className={`${page === "contact" ? "active" : ""}`}
+          to="/contact-us">
+            Contact
+          </Link>
           {/* <Link to="#">Promotions</Link> */}
-          <Link to="#">Blogs</Link>
+          {/* <Link to="#">Blogs</Link> */}
         </nav>
         <Link className="cartButton">
           <img src={like} alt="Liked Cars" />

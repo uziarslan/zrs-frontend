@@ -433,6 +433,11 @@
     color: white;
 }
 
+.badgeContainer.sold{
+    background: #FF0004;
+    padding: 12px 55px;
+}
+
 .carVerticalButtons {
     display: flex;
     flex-direction: column;
@@ -670,7 +675,7 @@ footer {
 .logoAndTagLine img {
     width: 189px;
     height: 126px;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .brandTagLine {
@@ -1894,6 +1899,11 @@ h2 {
     .contactFormWrapper button {
         padding: 15px;
     }
+
+    .carDesHeader{
+        flex-wrap: wrap;
+        gap: 20px;
+    }
 }
 
 
@@ -2121,6 +2131,39 @@ h2 {
     .feature-grid {
         flex-direction: column;
         align-items: center;
+    }
+
+    .main-image{
+        height: 400px;
+    }
+
+    .cardHeading{
+        font-size: 1rem;
+    }
+
+    .cardDetail{
+        font-size: 1rem;
+    }
+
+    .carIconContainer{
+        width: 90px;
+    }
+
+    .btn{
+        font-size: 1rem;
+    }
+    .gallery-container{
+        margin-top: 150px;
+    }
+
+    .carDescriptionSingle{
+        font-size: 1rem;
+        line-height: 25px;
+    }
+
+    .aboutUsSection{
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
     }
 }
 
