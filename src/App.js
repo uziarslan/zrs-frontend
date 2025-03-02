@@ -16,6 +16,8 @@ import Car from "./Pages/Car";
 import Buy from "./Pages/Buy";
 import { AuthContext } from "./Context/AuthContext";
 import Loader from "./Components/Loader";
+import AllBlogs from "./Pages/AllBlogs";
+import Blog from "./Pages/Blog";
 
 function App() {
   const { isLoading } = useContext(AuthContext);
@@ -36,6 +38,8 @@ function App() {
         <Route path="/test-drive-confirm" element={<TestDriveConfirm />} />
         <Route path="/car/:id" element={<Car />} />
         <Route path="/buy" element={<Buy />} />
+        <Route path="/blogs" element={<AllBlogs />} />
+        <Route path="/blog/:id" element={<Blog />} />
       </Routes>
     </div>
   );

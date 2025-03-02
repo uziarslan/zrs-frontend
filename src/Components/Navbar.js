@@ -47,6 +47,7 @@ export default function Navbar({ page }) {
           >
             Buy
           </Link>
+          <Link className={`${page === "blog" ? "active" : ""}`} to="/blogs">Blogs</Link>
           <Link
             className={`${page === "finance" ? "active" : ""}`}
             to="/finance"
