@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export default function Subscribe() {
   const [email, setEmail] = useState("");
   return (
-    <section className="newsLetterSection">
+    <section className="newsLetterSection max-width">
       <div className="newsletterContainer">
         <h2 className="newsLetterHeading">
           Subscribe to Our Newsletter For Latest Updates and Promotions

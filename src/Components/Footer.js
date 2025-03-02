@@ -11,7 +11,7 @@ import facebook from "../Assets/icons/facebook.svg";
 export default function Footer() {
   return (
     <footer>
-      <div className="footerContentContainer">
+      <div className="footerContentContainer max-width">
         <div className="footerContent">
           <div className="logoAndTagLine">
             <img src={logo} alt="Logo" />

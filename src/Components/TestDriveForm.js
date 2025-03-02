@@ -51,7 +51,7 @@ const TestDriveForm = () => {
   };
 
   return (
-    <div className="sellcontainer">
+    <div className="sellcontainer max-width">
       <Flash message={message} />
       <h1 className="title">Test Drive</h1>
       <form className="form" onSubmit={handleSubmit}>
@@ -206,9 +206,9 @@ const TestDriveForm = () => {
           {/* Form Actions */}
           <div className="formActions">
             <Link to="/test-drive">
-            <button type="button" className="cancelButton">
-              Cancel
-            </button>
+              <button type="button" className="cancelButton">
+                Cancel
+              </button>
             </Link>
             <button type="submit" className="saveButton">
               Submit

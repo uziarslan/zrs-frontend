@@ -12,7 +12,7 @@ export default function Navbar({ page }) {
 
   return (
     <header className="header">
-      <div className="container">
+      <div className="container max-width">
         <img src={logo} alt="Logo" className="logo" />
         <i
           className={`bx ${isNavOpen ? "bx-x" : "bx-menu"} burger-menu`}
@@ -47,7 +47,9 @@ export default function Navbar({ page }) {
           >
             Buy
           </Link>
-          <Link className={`${page === "blog" ? "active" : ""}`} to="/blogs">Blogs</Link>
+          <Link className={`${page === "blog" ? "active" : ""}`} to="/blogs">
+            Blogs
+          </Link>
           <Link
             className={`${page === "finance" ? "active" : ""}`}
             to="/finance"

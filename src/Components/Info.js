@@ -7,7 +7,7 @@ import slidebg4 from "../Assets/images/slidebg4.jpg";
 export default function Info() {
   const [activeTab, setActiveTab] = useState(1);
   return (
-    <section className="infoSection">
+    <section className="infoSection max-width">
       <h6 className="infoTextContent">
         <span>Trust, reliability, and expertise</span> drive everything we do.
         We focus on open communication and honest guidance, ensuring you have

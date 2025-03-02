@@ -11,7 +11,7 @@ export default function CarGallery({ carData }) {
   const [features, setFeatures] = useState([]);
   const [details, setDetails] = useState([]);
 
-  const {addCarToLocalStorage} = useContext(AuthContext);
+  const { addCarToLocalStorage } = useContext(AuthContext);
 
   // Load icons and process data
   useEffect(() => {
@@ -77,7 +77,7 @@ export default function CarGallery({ carData }) {
     })) || [];
 
   return (
-    <div className="gallery-container">
+    <div className="gallery-container max-width">
       {/* Header */}
       <header className="gallery-header">
         <h1 className="gallery-title">
@@ -92,7 +92,12 @@ export default function CarGallery({ carData }) {
         </h1>
         <div className="action-buttons">
           <button className="btn">Buy Now</button>
-          <button className="btn" onClick={() => addCarToLocalStorage(carData._id)}>Test Drive</button>
+          <button
+            className="btn"
+            onClick={() => addCarToLocalStorage(carData._id)}
+          >
+            Test Drive
+          </button>
           <button className="btn">Contact us</button>
         </div>
       </header>

@@ -8,7 +8,7 @@ import car2 from "../Assets/images/image2.jpg";
 export default function About() {
   return (
     <section className="aboutUsSection">
-      <div className="aboutUsContentHolder">
+      <div className="aboutUsContentHolder max-width">
         <div className="aboutUsHeading">
           <h2 className="aboutHeading">
             Book a Test Drive, Experience the Thrill!

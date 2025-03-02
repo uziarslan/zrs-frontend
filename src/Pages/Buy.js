@@ -17,7 +17,6 @@ const bodyTypes = [
   "Sports",
 ];
 
-
 const Buy = () => {
   const { setIsLoading } = useContext(AuthContext);
 
@@ -32,7 +31,6 @@ const Buy = () => {
   const [cars, setCars] = useState([]);
   const [fetchedCompanies, setFetchedCompanies] = useState([]);
   const [vehicleTypes, setVehicleTypes] = useState([]);
-
 
   // Fetch companies, vehicle types, and initial cars
   useEffect(() => {
@@ -175,7 +173,7 @@ const Buy = () => {
   return (
     <>
       <Navbar page="buy" />
-      <div className="filteredSearchSection">
+      <div className="filteredSearchSection max-width">
         <CarFilters
           mileage={mileage}
           yearBuilt={yearBuilt}
