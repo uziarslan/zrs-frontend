@@ -20,6 +20,7 @@ export default function Navbar({ page }) {
           <Link className={`${page === "buy" ? "active" : ""}`} to="/buy">
             Buy
           </Link>
+          <Link className={`${page === "blog" ? "active" : ""}`} to="/blogs">Blogs</Link>
           <Link
             className={`${page === "finance" ? "active" : ""}`}
             to="/finance"
@@ -27,11 +28,10 @@ export default function Navbar({ page }) {
             Finance
           </Link>
           <Link className={`${page === "contact" ? "active" : ""}`}
-          to="/contact-us">
+            to="/contact-us">
             Contact
           </Link>
           {/* <Link to="#">Promotions</Link> */}
-          {/* <Link to="#">Blogs</Link> */}
         </nav>
         <Link className="cartButton">
           <img src={like} alt="Liked Cars" />
