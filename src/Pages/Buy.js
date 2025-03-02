@@ -5,6 +5,19 @@ import CarFilters from "../Components/CarFilters";
 import axiosInstance from "../services/axiosInstance";
 import CarRender from "../Components/CarsRender";
 
+const prefixedCompanies = ["BMW", "Audi", "Bentley", "GMC", "Jaguar"];
+
+const bodyTypes = [
+  "All types",
+  "Sedan",
+  "SUV",
+  "Cross Over",
+  "Convertible",
+  "HatchBack",
+  "Sports",
+];
+
+
 const Buy = () => {
   const { setIsLoading } = useContext(AuthContext);
 
@@ -20,17 +33,6 @@ const Buy = () => {
   const [fetchedCompanies, setFetchedCompanies] = useState([]);
   const [vehicleTypes, setVehicleTypes] = useState([]);
 
-  const prefixedCompanies = ["BMW", "Audi", "Bentley", "GMC", "Jaguar"];
-
-  const bodyTypes = [
-    "All types",
-    "Sedan",
-    "SUV",
-    "Cross Over",
-    "Convertible",
-    "HatchBack",
-    "Sports",
-  ];
 
   // Fetch companies, vehicle types, and initial cars
   useEffect(() => {
