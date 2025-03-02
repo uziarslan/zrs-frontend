@@ -70,7 +70,7 @@ const Buy = () => {
     ]).finally(() => {
       setIsLoading(false);
     });
-  }, [setIsLoading]);
+  }, [setIsLoading, prefixedCompanies]);
 
   const fetchAllCars = async () => {
     try {
