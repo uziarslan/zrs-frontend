@@ -8,11 +8,9 @@
 }
 
 .container {
-    max-width: 1440px;
     padding: 18px 26px;
     border: 1px solid #29586033;
     background: #FFFFFFE8;
-    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -145,11 +143,6 @@
     margin-top: -70px;
     background-color: #fff;
     padding: 70px 20px 0px 20px;
-}
-
-.aboutUsContentHolder {
-    max-width: 1440px;
-    margin: 0 auto;
 }
 
 .aboutUsHeading {
@@ -298,8 +291,8 @@
     display: flex;
     flex-direction: column;
     gap: 23px;
-    max-width: 1440px;
-    margin: 138px auto;
+    margin-top: 138px;
+    margin-bottom: 138px;
     padding: 0px 20px;
 }
 
@@ -374,7 +367,7 @@
 
 .carRenderCardHolder {
     display: inline-grid;
-    grid-template-columns: repeat(2, 460px);
+    grid-template-columns: repeat(2, 1fr);
     gap: 32px;
     width: 100%;
     max-width: 100%;
@@ -413,7 +406,7 @@
     justify-content: space-between;
     text-decoration: none;
     color: inherit;
-    max-width: 460px;
+    min-width: 280px;
 }
 
 .cardHeader {
@@ -591,8 +584,8 @@
 }
 
 .newsLetterSection {
-    max-width: 1440px;
-    margin: 167px auto 183px auto;
+    margin-top: 167px;
+    margin-bottom: 183px;
     padding: 0px 20px;
 }
 
@@ -676,8 +669,6 @@ footer {
 }
 
 .footerContentContainer {
-    max-width: 1440px;
-    margin: 0 auto;
     padding: 35px 20px 26px 20px;
     display: flex;
     flex-direction: column;
@@ -850,7 +841,6 @@ footer {
 }
 
 .infoSection {
-    max-width: 1440px;
     margin: 111px auto;
     display: flex;
     flex-direction: column;
@@ -1070,9 +1060,6 @@ footer {
 }
 
 .sellcontainer {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1363,9 +1350,8 @@ footer {
 }
 
 .testDrivePageSec {
-    max-width: 1440px;
     margin: 69px auto 102px auto;
-    padding: 20px;
+    padding: 20px 0px;
     box-shadow: 0px 0px 74px 30px #0000000D;
     border-radius: 16px;
 }
@@ -1383,7 +1369,6 @@ footer {
 
 
 .contactFormSection {
-    max-width: 1440px;
     padding: 0px 20px;
     margin: 70px auto 87px auto;
 }
@@ -1473,7 +1458,6 @@ footer {
 
 
 .gallery-container {
-    max-width: 1440px;
     margin: 0 auto 94px auto;
     padding: 0 20px;
     margin-top: 247px;
@@ -1708,11 +1692,6 @@ footer {
     margin-bottom: 100px;
 }
 
-.feature-list-container {
-    padding: 20px;
-    text-align: center;
-}
-
 .feature-grid {
     display: flex;
     justify-content: center;
@@ -1830,7 +1809,6 @@ h2 {
 }
 
 .blogsSection {
-    max-width: 1440px;
     margin: 100px auto;
     padding: 0px 20px;
 }
@@ -1856,15 +1834,13 @@ h2 {
 }
 
 .blogContainer {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
 
 .blogCard {
-    max-width: 442px;
+    min-width: 238px;
 }
 
 .blogCardImage {
@@ -1939,7 +1915,6 @@ h2 {
 }
 
 .singleBlogSection {
-    max-width: 1440px;
     margin: 86px auto;
     display: flex;
     flex-direction: row;
@@ -2109,7 +2084,33 @@ h2 {
     color: #fff;
 }
 
+@media(max-width: 1480px) {
+    .singleBlogSection {
+        padding: 0px 20px;
+    }
 
+    .singleBlogContainer,
+    .blogContentLarge p,
+    .latestArticleContainer {
+        max-width: none;
+        width: 100%;
+    }
+
+    .blogContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sellcontainer,
+    .testDrivePageSec,
+    .filteredSearchSection {
+        padding: 20px;
+    }
+
+    .max-width {
+        max-width: 1300px;
+    }
+
+}
 
 @media(max-width: 1200px) {
     .formGrid {
@@ -2124,6 +2125,46 @@ h2 {
 
     .carRenderCardHolder {
         grid-template-columns: repeat(2, 380px);
+    }
+}
+
+@media (max-width: 1066px) {
+    .infoCustomSlider {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .infoCustomSlider:last-child {
+        border-bottom: 1px solid #000000;
+    }
+
+    .slide {
+        width: 100%;
+        height: 100px;
+        padding: 20px 0px;
+        border: 1px solid #000000;
+        border-bottom: none;
+        flex-shrink: 1;
+        position: relative;
+    }
+
+    .slide.active {
+        padding: 30px;
+        height: auto;
+        width: auto;
+    }
+
+    .slide.active .slideTitle {
+        text-align: left;
+    }
+
+    .slideTitle {
+        text-align: center;
+    }
+
+    .slide.active .slideContent {
+        opacity: 1;
+        margin-top: 15px;
     }
 }
 
@@ -2159,157 +2200,62 @@ h2 {
     }
 }
 
-
-
-@media (max-width: 480px) {
-
-    .imagePreview,
-    .addImage {
-        width: 120px;
-        height: 120px;
-    }
-
-    .title {
-        font-size: 2rem;
-        line-height: 48px;
-    }
-
-    .subtitle {
-        font-size: 1.2rem;
-    }
-
-    .form {
-        padding: 16px;
-    }
-
-    .formGroup {
-        padding: 12px;
-    }
-
-    .formGroup label {
-        font-size: 0.6rem;
-        left: 12px;
-        top: -6px;
-    }
-
-    .formGroup input,
-    .formGroup select,
-    .formGroup textarea {
-        font-size: 0.9rem;
-    }
-
-    .contactusHeading {
-        font-size: 2rem;
-    }
-
-    .contactFormWrapper {
-        padding: 20px;
-    }
-
-    .companyContactDetails {
-        padding: 20px;
-        gap: 20px;
-    }
-
-    .iconAndInfo p {
-        font-size: 0.8rem;
-    }
-
-    .contactFormWrapper button {
-        padding: 15px;
-    }
-
-    .carDesHeader {
-        flex-wrap: wrap;
-        gap: 20px;
-    }
-}
-
-
-@media(max-width: 380px) {
-    .cardBody {
-        width: 100%;
-        min-width: auto;
-    }
-}
-
-@media(max-width: 576px) {
-
-    .newsLetterHeading {
-        font-size: 1.5rem;
-        line-height: 42px;
-    }
-
-    .newsLetterSubheading {
-        font-size: 0.7rem;
-        line-height: 25px;
-    }
-
-    .newsLetterInput {
-        width: 100%;
-    }
-
-    .infoTextContent {
-        font-size: 1.3rem;
-        line-height: 40px;
-    }
-
-    .accordionSectionHeading {
-        font-size: 2rem;
-    }
-
-    .accordion-item {
-        padding: 20px;
-    }
-
-    .accordion-header {
-        font-size: 1rem;
-    }
-
-    .accordion-header.active {
-        font-weight: 600;
-        font-size: 1.1rem;
-    }
-
-    .accordion-content {
-        font-size: 0.9rem;
-        line-height: 30px;
-    }
-}
-
-
-@media(min-width: 576px) {}
-
-@media (max-width:700px) {
-    .image-container {
-        position: relative;
-    }
-
-    .image {
-        width: 100%;
-        position: fixed;
-        left: 0;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateX(100%);
-    }
-
-    .expanded {
-        width: 100%;
-        position: relative;
-        opacity: 1;
-        visibility: visible;
-        transform: translateX(0);
-    }
-}
-
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
     .nav {
         display: flex;
         gap: 37px;
         align-items: center;
     }
 
+}
+
+@media(max-width: 840px) {
+    .heroMainHeading {
+        font-size: 2.4rem;
+        line-height: 58.5px;
+    }
+
+    .ctaText {
+        font-size: 1rem;
+    }
+}
+
+@media(min-width: 840px) {
+    .logo {
+        height: 86px;
+        width: 129px;
+        object-fit: contain;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .cartButton img {
+        width: 62px;
+        height: 62px;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .aboutHeading {
+        font-size: 4.5rem;
+        line-height: 112px;
+    }
+
+    .aboutUsSubHeading {
+        font-size: 1.2rem;
+        line-height: 34px;
+    }
+
+    .aboutUsCta p {
+        font-size: 1.2rem;
+    }
+
+    .secondaryHeroMainHeading {
+        font-size: 4.5rem;
+        line-height: 112.5px;
+    }
+
+    .paginationOuter {
+        font-size: 1.6rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -2487,107 +2433,144 @@ h2 {
     }
 }
 
-@media(min-width: 840px) {
-    .logo {
-        height: 86px;
-        width: 129px;
-        object-fit: contain;
-        transition: all 0.2s ease-in-out;
-    }
-
-    .cartButton img {
-        width: 62px;
-        height: 62px;
-        transition: all 0.2s ease-in-out;
-    }
-
-    .aboutHeading {
-        font-size: 4.5rem;
-        line-height: 112px;
-    }
-
-    .aboutUsSubHeading {
-        font-size: 1.2rem;
-        line-height: 34px;
-    }
-
-    .aboutUsCta p {
-        font-size: 1.2rem;
-    }
-
-    .secondaryHeroMainHeading {
-        font-size: 4.5rem;
-        line-height: 112.5px;
-    }
-
-    .paginationOuter {
-        font-size: 1.6rem;
-    }
-}
-
-@media(max-width: 840px) {
-    .heroMainHeading {
-        font-size: 2.4rem;
-        line-height: 58.5px;
-    }
-
-    .ctaText {
-        font-size: 1rem;
-    }
-}
-
-@media(min-width: 992px) {}
-
-@media (max-width: 1066px) {
-    .infoCustomSlider {
-        flex-direction: column;
-        height: auto;
-    }
-
-    .infoCustomSlider:last-child {
-        border-bottom: 1px solid #000000;
-    }
-
-    .slide {
-        width: 100%;
-        height: 100px;
-        padding: 20px 0px;
-        border: 1px solid #000000;
-        border-bottom: none;
-        flex-shrink: 1;
+@media (max-width:700px) {
+    .image-container {
         position: relative;
     }
 
-    .slide.active {
-        padding: 30px;
-        height: auto;
-        width: auto;
+    .image {
+        width: 100%;
+        position: fixed;
+        left: 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(100%);
     }
 
-    .slide.active .slideTitle {
-        text-align: left;
-    }
-
-    .slideTitle {
-        text-align: center;
-    }
-
-    .slide.active .slideContent {
+    .expanded {
+        width: 100%;
+        position: relative;
         opacity: 1;
-        margin-top: 15px;
+        visibility: visible;
+        transform: translateX(0);
     }
 }
 
-@media(max-width: 1480px) {
-    .singleBlogSection {
-        padding: 0px 20px;
+@media(max-width: 576px) {
+
+    .newsLetterHeading {
+        font-size: 1.5rem;
+        line-height: 42px;
     }
 
-    .singleBlogContainer,
-    .blogContentLarge p,
-    .latestArticleContainer {
-        max-width: none;
+    .newsLetterSubheading {
+        font-size: 0.7rem;
+        line-height: 25px;
+    }
+
+    .newsLetterInput {
         width: 100%;
     }
 
+    .infoTextContent {
+        font-size: 1.3rem;
+        line-height: 40px;
+    }
+
+    .accordionSectionHeading {
+        font-size: 2rem;
+    }
+
+    .accordion-item {
+        padding: 20px;
+    }
+
+    .accordion-header {
+        font-size: 1rem;
+    }
+
+    .accordion-header.active {
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+
+    .accordion-content {
+        font-size: 0.9rem;
+        line-height: 30px;
+    }
+
+    .blogContainer {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+
+    .imagePreview,
+    .addImage {
+        width: 120px;
+        height: 120px;
+    }
+
+    .title {
+        font-size: 2rem;
+        line-height: 48px;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .form {
+        padding: 16px;
+    }
+
+    .formGroup {
+        padding: 12px;
+    }
+
+    .formGroup label {
+        font-size: 0.6rem;
+        left: 12px;
+        top: -6px;
+    }
+
+    .formGroup input,
+    .formGroup select,
+    .formGroup textarea {
+        font-size: 0.9rem;
+    }
+
+    .contactusHeading {
+        font-size: 2rem;
+    }
+
+    .contactFormWrapper {
+        padding: 20px;
+    }
+
+    .companyContactDetails {
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .iconAndInfo p {
+        font-size: 0.8rem;
+    }
+
+    .contactFormWrapper button {
+        padding: 15px;
+    }
+
+    .carDesHeader {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+}
+
+@media(max-width: 380px) {
+    .cardBody {
+        width: 100%;
+        min-width: auto;
+    }
 }

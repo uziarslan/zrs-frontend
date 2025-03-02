@@ -126,6 +126,11 @@ button[type="outline"] {
   z-index: 10000;
 }
 
+.max-width {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
 
 .overlay {
   position: fixed;

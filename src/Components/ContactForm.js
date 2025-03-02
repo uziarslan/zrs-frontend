@@ -41,7 +41,7 @@ export default function ContactForm() {
 
   return (
     <>
-      <section className="contactFormSection">
+      <section className="contactFormSection max-width">
         <h2 className="contactusHeading">Contact us</h2>
         <div className="completePage">
           <form className="contactFormWrapper" onSubmit={handleSubmit}>

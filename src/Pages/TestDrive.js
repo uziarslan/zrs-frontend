@@ -42,7 +42,7 @@ export default function TestDrive() {
           </>
         }
       />
-      <section className="testDrivePageSec">
+      <section className="testDrivePageSec max-width">
         <h2 className="testDriveMainHeading">Test Drive</h2>
         <Cars cars={cars} />
       </section>

@@ -40,7 +40,7 @@ export default function Carlist() {
   });
 
   return (
-    <section className="carsForSaleSection">
+    <section className="carsForSaleSection max-width">
       <div className="carForSaleHeader">
         <div className="mainSec">
           <h2 className="carsForSaleHeading">Latest Cars for Sale</h2>

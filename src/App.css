@@ -445,11 +445,8 @@
 .filteredSearchSection {
     display: flex;
     flex-direction: row;
-    gap: 77px;
-    max-width: 1440px;
-    margin: 0 auto;
+    gap: 15px;
     margin-top: 200px;
-    padding: 0px 20px;
 }
 
 .selected-companies {

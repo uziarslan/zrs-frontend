@@ -99,7 +99,7 @@ const FinanceForm = () => {
     : vehicleTypes;
 
   return (
-    <div className="sellcontainer">
+    <div className="sellcontainer max-width">
       <h1 className="title">FINANCE ELIGIBILITY</h1>
       <form className="form" onSubmit={handleSubmit}>
         <p className="subtitle">Fill All Detail About You & Your Car</p>

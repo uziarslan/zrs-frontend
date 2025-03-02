@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Confirm = ({ data }) => {
   if (!Array.isArray(data.buttons)) return null;
   return (
-    <div className="sellcontainer">
+    <div className="sellcontainer max-width">
       <h1 className="title">{data.pageTitle}</h1>
       <div className="confirmationContainer">
         <img src={data.confirmImage} alt="Confirmation" />
