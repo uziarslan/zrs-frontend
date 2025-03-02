@@ -93,7 +93,6 @@ const CarFilters = ({
         <div
           className="filter-icon"
           onClick={toggleContainer}
-          aria-expanded={isContainerOpen}
           role="button"
           tabIndex={0}
           onKeyPress={(e) => {
