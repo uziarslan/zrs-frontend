@@ -59,6 +59,16 @@
     transition: all 0.2s ease-in-out;
 }
 
+.cartButtonDropdown {
+    display: none;
+}
+
+.cartButtonDropdown img {
+    width: 45px;
+    height: 45px;
+    transition: all 0.2s ease-in-out;
+}
+
 .burger-menu {
     display: none;
     /* Hidden by default (desktop) */
@@ -2288,9 +2298,146 @@ h2 {
     .paginationOuter {
         font-size: 1.6rem;
     }
+
+    .formGroup label {
+        font-size: 0.6rem;
+        left: 12px;
+        top: -6px;
+    }
+
+    .formGroup input,
+    .formGroup select,
+    .formGroup textarea {
+        font-size: 0.9rem;
+    }
+
+    .contactusHeading {
+        font-size: 2rem;
+    }
+
+    .contactFormWrapper {
+        padding: 20px;
+    }
+
+    .companyContactDetails {
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .iconAndInfo p {
+        font-size: 0.8rem;
+    }
+
+    .contactFormWrapper button {
+        padding: 15px;
+    }
+
+    .carDesHeader {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
 }
 
-@media (max-width: 768px) {
+
+@media(max-width: 380px) {
+    .cardBody {
+        width: 100%;
+        min-width: auto;
+    }
+}
+
+@media(max-width: 576px) {
+
+    .newsLetterHeading {
+        font-size: 1.5rem;
+        line-height: 42px;
+    }
+
+    .newsLetterSubheading {
+        font-size: 0.7rem;
+        line-height: 25px;
+    }
+
+    .newsLetterInput {
+        width: 100%;
+    }
+
+    .infoTextContent {
+        font-size: 1.3rem;
+        line-height: 40px;
+    }
+
+    .accordionSectionHeading {
+        font-size: 2rem;
+    }
+
+    .accordion-item {
+        padding: 20px;
+    }
+
+    .accordion-header {
+        font-size: 1rem;
+    }
+
+    .accordion-header.active {
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+
+    .accordion-content {
+        font-size: 0.9rem;
+        line-height: 30px;
+    }
+}
+
+
+@media(min-width: 576px) {}
+
+@media (max-width:700px) {
+    .image-container {
+        position: relative;
+    }
+
+    .image {
+        width: 100%;
+        position: fixed;
+        left: 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(100%);
+    }
+
+    .expanded {
+        width: 100%;
+        position: relative;
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+    }
+}
+
+@media(min-width: 1024px) {
+    .logo {
+        height: 86px;
+        width: 129px;
+        object-fit: contain;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .cartButton img {
+        width: 62px;
+        height: 62px;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .cartButtonDropdown img {
+        width: 62px;
+        height: 62px;
+        transition: all 0.2s ease-in-out;
+    }
+}
+
+@media (max-width: 1024px) {
     .infoSection {
         padding: 0 10px;
     }
@@ -2466,12 +2613,82 @@ h2 {
 
     .burger-menu {
         display: block;
-        /* Show burger menu on mobile */
+    }
+
+    .cartButton {
+        display: none;
+    }
+
+    .cartButtonDropdown {
+        display: block;
     }
 
     .nav {
         display: flex;
-        /* Always flex, but hidden via max-height */
+        flex-direction: column;
+        gap: 20px;
+        position: absolute;
+        top: 100px;
+        left: 0;
+        right: 0;
+        background: #FFFFFFE8;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        z-index: 999;
+    }
+
+    .nav.open {
+        max-height: 90vh;
+        opacity: 1;
+        top: 100px;
+    }
+
+}
+
+@media(min-width: 840px) {
+
+    .aboutHeading {
+        font-size: 4.5rem;
+        line-height: 112px;
+    }
+
+    .aboutUsSubHeading {
+        font-size: 1.2rem;
+        line-height: 34px;
+    }
+
+    .aboutUsCta p {
+        font-size: 1.2rem;
+    }
+
+    .secondaryHeroMainHeading {
+        font-size: 4.5rem;
+        line-height: 112.5px;
+    }
+
+    .paginationOuter {
+        font-size: 1.6rem;
+    }
+}
+
+@media(max-width: 840px) {
+    .heroMainHeading {
+        font-size: 2.4rem;
+        line-height: 58.5px;
+    }
+
+    .ctaText {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 1066px) {
+    .infoCustomSlider {
         flex-direction: column;
         gap: 20px;
         position: absolute;

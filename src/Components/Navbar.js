@@ -64,10 +64,13 @@ export default function Navbar({ page }) {
           >
             Contact
           </Link>
-          <Link className="cartButton">
+          <Link className="cartButtonDropdown">
             <img src={like} alt="Liked Cars" />
           </Link>
         </nav>
+        <Link className="cartButton">
+          <img src={like} alt="Liked Cars" />
+        </Link>
       </div>
     </header>
   );
