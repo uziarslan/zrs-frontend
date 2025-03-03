@@ -28,7 +28,10 @@
 }
 
 .nav {
-    display: none;
+    /* Default state (desktop) */
+    display: flex;
+    gap: 37px;
+    align-items: center;
 }
 
 .nav a {
@@ -56,6 +59,19 @@
     width: 45px;
     height: 45px;
     transition: all 0.2s ease-in-out;
+}
+
+.burger-menu {
+    display: none;
+    /* Hidden by default (desktop) */
+    font-size: 2rem;
+    cursor: pointer;
+    color: #1E1515;
+    transition: color 0.2s;
+}
+
+.burger-menu:hover {
+    color: #295860;
 }
 
 .mainHeroSection {
@@ -2024,11 +2040,27 @@ h2 {
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
     .nav {
         display: flex;
-        gap: 37px;
-        align-items: center;
+        /* Ensure it’s visible on desktop */
+        max-height: none;
+        /* Remove max-height restriction */
+        opacity: 1;
+        /* Always visible */
+        position: static;
+        /* Reset mobile positioning */
+        background: transparent;
+        /* No background needed */
+        padding: 0;
+        /* No padding needed */
+        box-shadow: none;
+        /* No shadow needed */
+    }
+
+    .burger-menu {
+        display: none;
+        /* Hide burger menu on desktop */
     }
 
 }
@@ -2205,6 +2237,38 @@ h2 {
     .aboutUsSection {
         border-top-left-radius: 40px;
         border-top-right-radius: 40px;
+    }
+
+    .burger-menu {
+        display: block;
+        /* Show burger menu on mobile */
+    }
+
+    .nav {
+        display: flex;
+        /* Always flex, but hidden via max-height */
+        flex-direction: column;
+        gap: 20px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #FFFFFFE8;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+        max-height: 0;
+        /* Collapsed state */
+        overflow: hidden;
+        opacity: 0;
+        z-index: 999;
+    }
+
+    .nav.open {
+        max-height: 90vh;
+        opacity: 1;
+        top: 100px;
     }
 }
 
