@@ -61,6 +61,16 @@
     transition: all 0.2s ease-in-out;
 }
 
+.cartButtonDropdown {
+    display: none;
+}
+
+.cartButtonDropdown img {
+    width: 45px;
+    height: 45px;
+    transition: all 0.2s ease-in-out;
+}
+
 .burger-menu {
     display: none;
     /* Hidden by default (desktop) */
@@ -2040,32 +2050,45 @@ h2 {
     }
 }
 
-@media (min-width: 769px) {
+/* @media (min-width: 1024px) {
     .nav {
         display: flex;
-        /* Ensure it’s visible on desktop */
         max-height: none;
-        /* Remove max-height restriction */
         opacity: 1;
-        /* Always visible */
         position: static;
-        /* Reset mobile positioning */
         background: transparent;
-        /* No background needed */
         padding: 0;
-        /* No padding needed */
         box-shadow: none;
-        /* No shadow needed */
     }
 
     .burger-menu {
         display: none;
-        /* Hide burger menu on desktop */
     }
 
+} */
+
+@media(min-width: 1024px) {
+    .logo {
+        height: 86px;
+        width: 129px;
+        object-fit: contain;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .cartButton img {
+        width: 62px;
+        height: 62px;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .cartButtonDropdown img {
+        width: 62px;
+        height: 62px;
+        transition: all 0.2s ease-in-out;
+    }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .infoSection {
         padding: 0 10px;
     }
@@ -2241,16 +2264,22 @@ h2 {
 
     .burger-menu {
         display: block;
-        /* Show burger menu on mobile */
+    }
+
+    .cartButton {
+        display: none;
+    }
+
+    .cartButtonDropdown {
+        display: block;
     }
 
     .nav {
         display: flex;
-        /* Always flex, but hidden via max-height */
         flex-direction: column;
         gap: 20px;
         position: absolute;
-        top: 100%;
+        top: 100px;
         left: 0;
         right: 0;
         background: #FFFFFFE8;
@@ -2259,7 +2288,6 @@ h2 {
         box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
         transition: max-height 0.3s ease, opacity 0.3s ease;
         max-height: 0;
-        /* Collapsed state */
         overflow: hidden;
         opacity: 0;
         z-index: 999;
@@ -2270,21 +2298,10 @@ h2 {
         opacity: 1;
         top: 100px;
     }
+
 }
 
 @media(min-width: 840px) {
-    .logo {
-        height: 86px;
-        width: 129px;
-        object-fit: contain;
-        transition: all 0.2s ease-in-out;
-    }
-
-    .cartButton img {
-        width: 62px;
-        height: 62px;
-        transition: all 0.2s ease-in-out;
-    }
 
     .aboutHeading {
         font-size: 4.5rem;
