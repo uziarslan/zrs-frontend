@@ -93,7 +93,6 @@ const CarFilters = ({
         <div
           className="filter-icon"
           onClick={toggleContainer}
-          aria-expanded={isContainerOpen}
           role="button"
           tabIndex={0}
           onKeyPress={(e) => {
@@ -117,7 +116,6 @@ const CarFilters = ({
             <h3
               className="filter-title"
               onClick={isMobile ? () => toggleFilter("company") : undefined}
-              aria-expanded={isMobile ? isOpen.company : true}
             >
               Company
               {isMobile && (
@@ -185,7 +183,6 @@ const CarFilters = ({
             <h3
               className="filter-title"
               onClick={isMobile ? () => toggleFilter("model") : undefined}
-              aria-expanded={isMobile ? isOpen.model : true}
             >
               Vehicle Types
               {isMobile && (
@@ -219,7 +216,6 @@ const CarFilters = ({
             <h3
               className="filter-title"
               onClick={isMobile ? () => toggleFilter("mileage") : undefined}
-              aria-expanded={isMobile ? isOpen.mileage : true}
             >
               Mileage
               {isMobile && (
@@ -267,7 +263,6 @@ const CarFilters = ({
             <h3
               className="filter-title"
               onClick={isMobile ? () => toggleFilter("yearBuilt") : undefined}
-              aria-expanded={isMobile ? isOpen.yearBuilt : true}
             >
               Year Built
               {isMobile && (
@@ -305,7 +300,6 @@ const CarFilters = ({
             <h3
               className="filter-title"
               onClick={isMobile ? () => toggleFilter("bodyType") : undefined}
-              aria-expanded={isMobile ? isOpen.bodyType : true}
             >
               Body Type
               {isMobile && (
@@ -341,7 +335,6 @@ const CarFilters = ({
             <h3
               className="filter-title"
               onClick={isMobile ? () => toggleFilter("installment") : undefined}
-              aria-expanded={isMobile ? isOpen.installment : true}
             >
               Max Monthly Installment
               {isMobile && (
@@ -389,7 +382,6 @@ const CarFilters = ({
             <h3
               className="filter-title"
               onClick={isMobile ? () => toggleFilter("availability") : undefined}
-              aria-expanded={isMobile ? isOpen.availability : true}
             >
               Availability
               {isMobile && (
