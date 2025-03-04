@@ -13,7 +13,9 @@ export default function Navbar({ page }) {
   return (
     <header className="header">
       <div className="container max-width">
-        <img src={logo} alt="Logo" className="logo" />
+        <Link to="/">
+          <img src={logo} alt="Logo" className="logo" />
+        </Link>
         <i
           className={`bx ${isNavOpen ? "bx-x" : "bx-menu"} burger-menu`}
           onClick={toggleNav}
