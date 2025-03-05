@@ -84,7 +84,7 @@
 
 .mainHeroSection {
     background-image: url("../images/herobg.jpg");
-    min-height: 934px;
+    min-height: calc(100vh + 90px);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -397,6 +397,7 @@
     gap: 32px;
     width: 100%;
     max-width: 100%;
+    max-height: 634px;
 }
 
 .cardBody {
@@ -556,6 +557,9 @@
     color: #FFFFFF;
     top: -15px;
     text-decoration: line-through;
+    width: 85%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 
@@ -628,7 +632,7 @@
     text-align: center;
     font-weight: 900;
     font-size: 3rem;
-    line-height: 84px;
+    line-height: 65px;
     letter-spacing: 0%;
     max-width: 870px;
     margin: 0;
@@ -805,7 +809,7 @@ footer {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 934px;
+    min-height: 80vh;
     margin-top: -20px;
     display: flex;
     align-items: flex-end;
@@ -845,8 +849,8 @@ footer {
 
 .secondaryHeroMainHeading {
     font-weight: 600;
-    font-size: 2.8rem;
-    line-height: 60px;
+    font-size: 2.5rem;
+    line-height: 50px;
     letter-spacing: 0%;
     text-align: center;
     max-width: 1003px;
@@ -1134,7 +1138,7 @@ footer {
     border: 1px solid #000000;
     border-radius: 5px;
     position: relative;
-    padding: 22.94px 30px;
+    padding: 16px;
 }
 
 .formGroup label {
@@ -1292,12 +1296,14 @@ footer {
     border-radius: 12px !important;
     cursor: pointer;
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1.2rem !important;
     letter-spacing: 0%;
     background-color: transparent !important;
     color: #295860 !important;
     max-width: 291px !important;
     width: 100%;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .saveButton {
@@ -2125,6 +2131,10 @@ h2 {
     color: #fff;
 }
 
+.filteredSearchSection {
+    margin-bottom: 80px;
+}
+
 @media(max-width: 1480px) {
     .singleBlogSection {
         padding: 0px 20px;
@@ -2259,12 +2269,6 @@ h2 {
 }
 
 @media(min-width: 1024px) {
-    .logo {
-        height: 86px;
-        width: 129px;
-        object-fit: contain;
-        transition: all 0.2s ease-in-out;
-    }
 
     .cartButton img {
         width: 62px;
@@ -2291,12 +2295,6 @@ h2 {
 }
 
 @media(min-width: 840px) {
-    .logo {
-        height: 86px;
-        width: 129px;
-        object-fit: contain;
-        transition: all 0.2s ease-in-out;
-    }
 
     .cartButton img {
         width: 62px;
@@ -2319,8 +2317,8 @@ h2 {
     }
 
     .secondaryHeroMainHeading {
-        font-size: 4.5rem;
-        line-height: 112.5px;
+        font-size: 2.8rem;
+        line-height: 60px;
     }
 
     .paginationOuter {
@@ -2561,17 +2559,39 @@ h2 {
         visibility: visible;
         transform: translateX(0);
     }
+
+    .formActions {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .completePage {
+        padding: 20px;
+    }
+
+    .secondaryHeroSection {
+        min-height: calc(100vh + 20px);
+    }
+
+    .secondaryHeroMainHeading {
+        margin-top: 50px;
+    }
+
+    .secondaryHeroContentContainer {
+        margin-bottom: 50px;
+    }
+
 }
 
 @media(max-width: 576px) {
 
     .newsLetterHeading {
-        font-size: 1.5rem;
+        font-size: 2rem;
         line-height: 42px;
     }
 
     .newsLetterSubheading {
-        font-size: 0.7rem;
+        font-size: 0.9rem;
         line-height: 25px;
     }
 

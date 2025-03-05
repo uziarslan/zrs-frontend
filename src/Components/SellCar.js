@@ -346,10 +346,8 @@ const SellCar = () => {
 
           {/* Form Actions */}
           <div className="formActions">
-            <Link to="/">
-              <button type="button" className="cancelButton">
-                Cancel
-              </button>
+            <Link className="cancelButton" to="/">
+              Cancel
             </Link>
             <button type="submit" className="saveButton">
               Save

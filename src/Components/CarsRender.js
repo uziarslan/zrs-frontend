@@ -1,16 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import redirect from "../Assets/icons/redirect.svg";
-import heart from "../Assets/icons/heart.svg";
 import mileage from "../Assets/icons/mileage.svg";
 import color from "../Assets/icons/color.svg";
 import calender from "../Assets/icons/calender.svg";
 import arrowLeft from "../Assets/icons/arrow-left.svg";
 import arrowRight from "../Assets/icons/arrow-right.svg";
+import { AuthContext } from "../Context/AuthContext";
+
 
 export default function CarRender({ cars }) {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
+
+    const {
+        addCarToFavorites,
+        removeCarFromFavorites,
+        isCarFavorite
+    } = useContext(AuthContext);
 
     // Calculate pagination details
     const totalItems = Array.isArray(cars) ? cars.length : 0;
@@ -40,6 +47,14 @@ export default function CarRender({ cars }) {
                     });
                 }
             }, 0);
+        }
+    };
+
+    const handleFavoriteToggle = (car) => {
+        if (isCarFavorite(car._id)) {
+            removeCarFromFavorites(car._id);
+        } else {
+            addCarToFavorites(car);
         }
     };
 
@@ -177,8 +192,19 @@ export default function CarRender({ cars }) {
                                     <button className="cardctaButton" type="button">
                                         <img src={redirect} alt="Redirect button" />
                                     </button>
-                                    <button className="cardctaButton" type="button">
-                                        <img src={heart} alt="Like button" />
+                                    <button
+                                        className="cardctaButton"
+                                        type="button"
+                                        onClick={(e) => {
+                                            e.preventDefault(); // Prevent Link navigation
+                                            handleFavoriteToggle(car);
+                                        }}
+                                    >
+                                        {isCarFavorite(car._id) ? (
+                                            <i class='bx bxs-heart' style={{ color: "#ff0000", fontSize: "20px" }}  ></i>
+                                        ) : (
+                                            <i class='bx bx-heart' style={{ color: "#fff", fontSize: "20px" }}></i>
+                                        )}
                                     </button>
                                 </div>
                             </div>

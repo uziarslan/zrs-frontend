@@ -4,6 +4,7 @@ import { AuthContext } from "../Context/AuthContext";
 import CarFilters from "../Components/CarFilters";
 import axiosInstance from "../services/axiosInstance";
 import CarRender from "../Components/CarsRender";
+import Footer from "../Components/Footer"
 
 const prefixedCompanies = ["BMW", "Audi", "Bentley", "GMC", "Jaguar"];
 
@@ -198,6 +199,7 @@ const Buy = () => {
         />
         <CarRender cars={cars} />
       </div>
+      <Footer />
     </>
   );
 };

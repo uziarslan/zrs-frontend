@@ -4,6 +4,7 @@ import { AuthContext } from "../Context/AuthContext";
 // Base icons
 import dummycar from "../Assets/car icons/dummycar.svg";
 import fallbackIcon from "../Assets/car icons/car.svg";
+import { Link } from "react-router-dom";
 
 export default function CarGallery({ carData }) {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -90,16 +91,22 @@ export default function CarGallery({ carData }) {
             .filter(Boolean)
             .join(" ")}
         </h1>
-        <div className="action-buttons">
-          <button className="btn">Buy Now</button>
-          <button
-            className="btn"
-            onClick={() => addCarToLocalStorage(carData._id)}
-          >
-            Test Drive
-          </button>
-          <button className="btn">Contact us</button>
-        </div>
+        {
+          carData?.saleStatus !== "sold" && (
+            <div className="action-buttons">
+              <button onClick={() => addCarToLocalStorage(carData._id, "buyNow")} className="btn">Buy Now</button>
+              <button
+                className="btn"
+                onClick={() => addCarToLocalStorage(carData._id, "testDrive")}
+              >
+                Test Drive
+              </button>
+              <Link to="/contact-us">
+                <button className="btn">Contact us</button>
+              </Link>
+            </div>
+          )
+        }
       </header>
 
       {/* Image Gallery */}

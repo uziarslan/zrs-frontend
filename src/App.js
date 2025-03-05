@@ -18,6 +18,9 @@ import { AuthContext } from "./Context/AuthContext";
 import Loader from "./Components/Loader";
 import AllBlogs from "./Pages/AllBlogs";
 import Blog from "./Pages/Blog";
+import BuyNow from "./Pages/BuyNow";
+import BuyNowConfirm from "./Pages/BuyNowConfirm";
+import Liked from "./Pages/Liked";
 
 function App() {
   const { isLoading } = useContext(AuthContext);
@@ -40,6 +43,9 @@ function App() {
         <Route path="/buy" element={<Buy />} />
         <Route path="/blogs" element={<AllBlogs />} />
         <Route path="/blog/:id" element={<Blog />} />
+        <Route path="/buy-now-form" element={<BuyNow />} />
+        <Route path="/buy-now-confirm" element={<BuyNowConfirm />} />
+        <Route path="/likes" element={<Liked />} />
       </Routes>
     </div>
   );

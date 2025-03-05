@@ -1,16 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import redirect from "../Assets/icons/redirect.svg";
-import heart from "../Assets/icons/heart.svg";
 import mileage from "../Assets/icons/mileage.svg";
 import color from "../Assets/icons/color.svg";
 import calender from "../Assets/icons/calender.svg";
 import arrowLeft from "../Assets/icons/arrow-left.svg";
 import arrowRight from "../Assets/icons/arrow-right.svg";
+import { AuthContext } from "../Context/AuthContext";
 
 export default function Cars({ cars }) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
+
+  // Get favorite car functions from AuthContext
+  const {
+    addCarToFavorites,
+    removeCarFromFavorites,
+    isCarFavorite
+  } = useContext(AuthContext);
 
   // Calculate pagination details
   const totalItems = Array.isArray(cars) ? cars.length : 0;
@@ -21,7 +28,7 @@ export default function Cars({ cars }) {
     ? cars.slice(indexOfFirstItem, indexOfLastItem)
     : [];
 
-  // Reset to page 1 when the cars prop changes (e.g., filtering in Carlist)
+  // Reset to page 1 when the cars prop changes
   useEffect(() => {
     setCurrentPage(1);
   }, [cars]);
@@ -30,7 +37,6 @@ export default function Cars({ cars }) {
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages && page !== currentPage) {
       setCurrentPage(page);
-      // Scroll to carCardHolder after the page updates
       setTimeout(() => {
         const carCardHolder = document.querySelector(".carCardHolder");
         if (carCardHolder) {
@@ -40,6 +46,15 @@ export default function Cars({ cars }) {
           });
         }
       }, 0);
+    }
+  };
+
+  // Handle favorite toggle
+  const handleFavoriteToggle = (car) => {
+    if (isCarFavorite(car._id)) {
+      removeCarFromFavorites(car._id);
+    } else {
+      addCarToFavorites(car);
     }
   };
 
@@ -127,9 +142,8 @@ export default function Cars({ cars }) {
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className={`pagination-arrow ${
-            currentPage === totalPages ? "disabled" : ""
-          }`}
+          className={`pagination-arrow ${currentPage === totalPages ? "disabled" : ""
+            }`}
           aria-label="Next page"
         >
           <img src={arrowRight} alt="Next page" />
@@ -151,9 +165,8 @@ export default function Cars({ cars }) {
             >
               <div className="cardHeader">
                 <div className="badgeContainerWrapper">
-                  {
-                    car.saleStatus !== "sold" ? (
-                      <>
+                  {car.saleStatus !== "sold" ? (
+                    <>
                       {car.featured === "yes" && (
                         <div className="badgeContainer featured">
                           <p>FEATURED</p>
@@ -164,22 +177,32 @@ export default function Cars({ cars }) {
                           <p>TEST DRIVE</p>
                         </div>
                       )}
-                      </>
-                    ): (
-                      car.saleStatus === "sold" && (
-                        <div className="badgeContainer sold">
-                          <p>SOLD</p>
-                        </div>
-                      )
+                    </>
+                  ) : (
+                    car.saleStatus === "sold" && (
+                      <div className="badgeContainer sold">
+                        <p>SOLD</p>
+                      </div>
                     )
-                  }      
+                  )}
                 </div>
                 <div className="carVerticalButtons">
                   <button className="cardctaButton" type="button">
                     <img src={redirect} alt="Redirect button" />
                   </button>
-                  <button className="cardctaButton" type="button">
-                    <img src={heart} alt="Like button" />
+                  <button
+                    className="cardctaButton"
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault(); // Prevent Link navigation
+                      handleFavoriteToggle(car);
+                    }}
+                  >
+                    {isCarFavorite(car._id) ? (
+                      <i class='bx bxs-heart' style={{ color: "#ff0000", fontSize: "20px" }}  ></i>
+                    ) : (
+                      <i class='bx bx-heart' style={{ color: "#fff", fontSize: "20px" }}></i>
+                    )}
                   </button>
                 </div>
               </div>

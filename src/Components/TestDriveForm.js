@@ -40,7 +40,7 @@ const TestDriveForm = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      await submitTestDriveForm(formData);
+      await submitTestDriveForm(formData, "testDriveForm");
       navigate("/test-drive-confirm");
     } catch (err) {
       console.error("Error submitting test drive request:", err);
