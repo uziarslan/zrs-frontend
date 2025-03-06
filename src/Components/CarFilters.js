@@ -39,8 +39,9 @@ const CarFilters = ({
     installment: false,
     availability: false,
   });
+  const [searchTitle, setSearchTitle] = useState("");
 
-  const filtersWrapperRef = useRef(null); // Ref for the filters container
+  const filtersWrapperRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -57,14 +58,13 @@ const CarFilters = ({
   const toggleContainer = () => {
     setIsContainerOpen((prev) => {
       const willOpen = !prev;
-      // Scroll to filters only when opening on mobile
       if (willOpen && isMobile) {
         setTimeout(() => {
           filtersWrapperRef.current?.scrollIntoView({
             behavior: "smooth",
             block: "start",
           });
-        }, 100); // Small timeout to ensure DOM update
+        }, 100);
       }
       return willOpen;
     });
@@ -75,6 +75,25 @@ const CarFilters = ({
       ...prev,
       [section]: !prev[section],
     }));
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchTitle(e.target.value);
+  };
+
+  const handleSearch = () => {
+    onSearch({ title: searchTitle.trim() });
+  };
+
+  const handleSearchKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
+  const handleReset = () => {
+    setSearchTitle("");
+    onReset();
   };
 
   const allCompanies = [...prefixedCompanies, ...carCompanies];
@@ -106,12 +125,35 @@ const CarFilters = ({
       )}
       <div
         className={`filters-wrapper ${isContainerOpen ? "open" : "closed"}`}
-        ref={filtersWrapperRef} // Attach the ref here
+        ref={filtersWrapperRef}
       >
         <div className="filters-container">
+          <div className="inputContainer mb-3">
+            <i className='bx bx-search-alt-2' ></i>
+            <input type="text" value={searchTitle}
+              placeholder="Search by (e.g., BMW c200 AMG)"
+              onChange={handleSearchChange}
+              onKeyPress={handleSearchKeyPress}
+            />
+          </div>
+          {/* <button className="search-button small" onClick={handleSearch}>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </button> */}
+
           <h2 className="filters-title">Find your dream car</h2>
 
-          {/* Company Filter */}
           <div className="filter-section">
             <h3
               className="filter-title"
@@ -178,7 +220,6 @@ const CarFilters = ({
             </div>
           </div>
 
-          {/* Vehicle Type Filter */}
           <div className="filter-section">
             <h3
               className="filter-title"
@@ -211,7 +252,6 @@ const CarFilters = ({
             </div>
           </div>
 
-          {/* Mileage Filter */}
           <div className="filter-section">
             <h3
               className="filter-title"
@@ -258,7 +298,6 @@ const CarFilters = ({
             </div>
           </div>
 
-          {/* Year Built Filter */}
           <div className="filter-section">
             <h3
               className="filter-title"
@@ -295,7 +334,6 @@ const CarFilters = ({
             </div>
           </div>
 
-          {/* Body Type Filter */}
           <div className="filter-section">
             <h3
               className="filter-title"
@@ -330,7 +368,6 @@ const CarFilters = ({
             </div>
           </div>
 
-          {/* Monthly Installment Filter */}
           <div className="filter-section">
             <h3
               className="filter-title"
@@ -377,7 +414,6 @@ const CarFilters = ({
             </div>
           </div>
 
-          {/* Availability Filter */}
           <div className="filter-section">
             <h3
               className="filter-title"
@@ -407,8 +443,7 @@ const CarFilters = ({
             </div>
           </div>
 
-          {/* Search and Footer Buttons */}
-          <button className="search-button" onClick={onSearch}>
+          <button className="search-button" onClick={handleSearch}>
             <svg
               width="16"
               height="16"
@@ -426,7 +461,7 @@ const CarFilters = ({
           </button>
 
           <div className="filters-footer">
-            <button className="footer-button" onClick={onReset}>
+            <button className="footer-button" onClick={handleReset}>
               ↺ Reset all filters
             </button>
             <button className="footer-button">★ Save Search</button>

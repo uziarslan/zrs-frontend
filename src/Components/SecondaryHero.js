@@ -16,7 +16,7 @@ export default function SecondaryHero({ bg, page, mainHeading }) {
           Home / <span>{page}</span>
         </p>
         <h1 className="secondaryHeroMainHeading">{mainHeading}</h1>
-        <div className="secondaryHeroSocialIconWrapper">
+        {/* <div className="secondaryHeroSocialIconWrapper">
           <div className="socialIconWrapper">
             <img src={youtube} alt="Youtube Social Link" />
           </div>
@@ -32,7 +32,7 @@ export default function SecondaryHero({ bg, page, mainHeading }) {
           <div className="socialIconWrapper">
             <img src={facebook} alt="Facebook Social Link" />
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

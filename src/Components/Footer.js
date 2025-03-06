@@ -7,6 +7,7 @@ import tiktok from "../Assets/icons/tiktok.svg";
 import linkedin from "../Assets/icons/linkedin.svg";
 import instagram from "../Assets/icons/instagram.svg";
 import facebook from "../Assets/icons/facebook.svg";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -24,11 +25,27 @@ export default function Footer() {
             <div>
               <h6 className="colHeading">ZRS CARS TRADING</h6>
               <ul className="footerList">
-                <li>Home</li>
-                <li>About us</li>
-                <li>Sell</li>
-                <li>Buy</li>
-                <li>Promotions</li>
+                <li>
+                  <Link className="footerLinks" to="/">Home</Link>
+                </li>
+                <li>
+                  <Link className="footerLinks" to="/about">About us</Link>
+                </li>
+                <li>
+                  <Link className="footerLinks" to="/sell">Sell</Link>
+                </li>
+                <li>
+                  <Link className="footerLinks" to="/buy">Buy</Link>
+                </li>
+                <li>
+                  <Link className="footerLinks" to="/blogs">Blogs</Link>
+                </li>
+                <li>
+                  <Link className="footerLinks" to="/finance">Finance</Link>
+                </li>
+                <li>
+                  <Link className="footerLinks" to="/contact-us">Contact</Link>
+                </li>
               </ul>
             </div>
             <div>

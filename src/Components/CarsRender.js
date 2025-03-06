@@ -1,23 +1,19 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import redirect from "../Assets/icons/redirect.svg";
-import mileage from "../Assets/icons/mileage.svg";
+import mileageIcon from "../Assets/icons/mileage.svg";
 import color from "../Assets/icons/color.svg";
 import calender from "../Assets/icons/calender.svg";
 import arrowLeft from "../Assets/icons/arrow-left.svg";
 import arrowRight from "../Assets/icons/arrow-right.svg";
 import { AuthContext } from "../Context/AuthContext";
 
-
 export default function CarRender({ cars }) {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
 
-    const {
-        addCarToFavorites,
-        removeCarFromFavorites,
-        isCarFavorite
-    } = useContext(AuthContext);
+    const { addCarToFavorites, removeCarFromFavorites, isCarFavorite } =
+        useContext(AuthContext);
 
     // Calculate pagination details
     const totalItems = Array.isArray(cars) ? cars.length : 0;
@@ -28,7 +24,7 @@ export default function CarRender({ cars }) {
         ? cars.slice(indexOfFirstItem, indexOfLastItem)
         : [];
 
-    // Reset to page 1 when the cars prop changes (e.g., filtering in Carlist)
+    // Reset to page 1 when the cars prop changes (e.g., filtering in Buy)
     useEffect(() => {
         setCurrentPage(1);
     }, [cars]);
@@ -37,16 +33,16 @@ export default function CarRender({ cars }) {
     const handlePageChange = (page) => {
         if (page >= 1 && page <= totalPages && page !== currentPage) {
             setCurrentPage(page);
-            // Scroll to carCardHolder after the page updates
+            // Scroll to carRenderCardHolder after the page updates
             setTimeout(() => {
-                const carCardHolder = document.querySelector(".carCardHolder");
-                if (carCardHolder) {
-                    carCardHolder.scrollIntoView({
+                const carRenderCardHolder = document.querySelector(".carRenderCardHolder");
+                if (carRenderCardHolder) {
+                    carRenderCardHolder.scrollIntoView({
                         behavior: "smooth",
                         block: "start",
                     });
                 }
-            }, 0);
+            }, 100); // Small delay to ensure DOM updates
         }
     };
 
@@ -165,28 +161,26 @@ export default function CarRender({ cars }) {
                         >
                             <div className="cardHeader">
                                 <div className="badgeContainerWrapper">
-                                    {
-                                        car.saleStatus !== "sold" ? (
-                                            <>
-                                                {car.featured === "yes" && (
-                                                    <div className="badgeContainer featured">
-                                                        <p>FEATURED</p>
-                                                    </div>
-                                                )}
-                                                {car.testDrive === "yes" && (
-                                                    <div className="badgeContainer test">
-                                                        <p>TEST DRIVE</p>
-                                                    </div>
-                                                )}
-                                            </>
-                                        ) : (
-                                            car.saleStatus === "sold" && (
-                                                <div className="badgeContainer sold">
-                                                    <p>SOLD</p>
+                                    {car.saleStatus !== "sold" ? (
+                                        <>
+                                            {car.featured === "yes" && (
+                                                <div className="badgeContainer featured">
+                                                    <p>FEATURED</p>
                                                 </div>
-                                            )
+                                            )}
+                                            {car.testDrive === "yes" && (
+                                                <div className="badgeContainer test">
+                                                    <p>TEST DRIVE</p>
+                                                </div>
+                                            )}
+                                        </>
+                                    ) : (
+                                        car.saleStatus === "sold" && (
+                                            <div className="badgeContainer sold">
+                                                <p>SOLD</p>
+                                            </div>
                                         )
-                                    }
+                                    )}
                                 </div>
                                 <div className="carVerticalButtons">
                                     <button className="cardctaButton" type="button">
@@ -201,9 +195,15 @@ export default function CarRender({ cars }) {
                                         }}
                                     >
                                         {isCarFavorite(car._id) ? (
-                                            <i class='bx bxs-heart' style={{ color: "#ff0000", fontSize: "20px" }}  ></i>
+                                            <i
+                                                className="bx bxs-heart"
+                                                style={{ color: "#ff0000", fontSize: "20px" }}
+                                            ></i>
                                         ) : (
-                                            <i class='bx bx-heart' style={{ color: "#fff", fontSize: "20px" }}></i>
+                                            <i
+                                                className="bx bx-heart"
+                                                style={{ color: "#fff", fontSize: "20px" }}
+                                            ></i>
                                         )}
                                     </button>
                                 </div>
@@ -234,7 +234,7 @@ export default function CarRender({ cars }) {
                                     <div className="singleInfoBlock">
                                         <img
                                             className="mileageIcon"
-                                            src={mileage}
+                                            src={mileageIcon}
                                             alt="Mileage Icon"
                                         />
                                         <p className="singleInfoTitle">Mileage</p>

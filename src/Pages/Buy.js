@@ -1,10 +1,10 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext, useState, useRef } from "react";
 import Navbar from "../Components/Navbar";
 import { AuthContext } from "../Context/AuthContext";
 import CarFilters from "../Components/CarFilters";
 import axiosInstance from "../services/axiosInstance";
 import CarRender from "../Components/CarsRender";
-import Footer from "../Components/Footer"
+import Footer from "../Components/Footer";
 
 const prefixedCompanies = ["BMW", "Audi", "Bentley", "GMC", "Jaguar"];
 
@@ -20,6 +20,7 @@ const bodyTypes = [
 
 const Buy = () => {
   const { setIsLoading } = useContext(AuthContext);
+  const carRenderRef = useRef(null); // Ref for CarRender component
 
   // State management for filters
   const [mileage, setMileage] = useState([]);
@@ -28,7 +29,7 @@ const Buy = () => {
   const [selectedCompanies, setSelectedCompanies] = useState([]);
   const [selectedBodyTypes, setSelectedBodyTypes] = useState([]);
   const [availableNow, setAvailableNow] = useState(false);
-  const [selectedVehicleType, setSelectedVehicleType] = useState(""); // Renamed from selectedModel
+  const [selectedVehicleType, setSelectedVehicleType] = useState("");
   const [cars, setCars] = useState([]);
   const [fetchedCompanies, setFetchedCompanies] = useState([]);
   const [vehicleTypes, setVehicleTypes] = useState([]);
@@ -51,7 +52,7 @@ const Buy = () => {
 
     const fetchVehicleTypes = async () => {
       try {
-        const response = await axiosInstance.get("/api/v1/fetch-vehicle-types"); // Adjusted endpoint
+        const response = await axiosInstance.get("/api/v1/fetch-vehicle-types");
         setVehicleTypes(
           Array.isArray(response.data.vehicleTypes)
             ? response.data.vehicleTypes
@@ -64,13 +65,11 @@ const Buy = () => {
     };
 
     setIsLoading(true);
-    Promise.all([
-      fetchCompanies(),
-      fetchVehicleTypes(),
-      fetchAllCars(),
-    ]).finally(() => {
-      setIsLoading(false);
-    });
+    Promise.all([fetchCompanies(), fetchVehicleTypes(), fetchAllCars()]).finally(
+      () => {
+        setIsLoading(false);
+      }
+    );
   }, [setIsLoading]);
 
   const fetchAllCars = async () => {
@@ -123,7 +122,7 @@ const Buy = () => {
   };
 
   const handleVehicleTypeChange = (vehicleType) => {
-    setSelectedVehicleType(vehicleType); // Renamed from handleModelChange
+    setSelectedVehicleType(vehicleType);
   };
 
   const handleYearBuiltChange = (index, value) => {
@@ -132,23 +131,31 @@ const Buy = () => {
     setYearBuilt(newYearBuilt);
   };
 
-  const handleSearch = async () => {
-    const filters = {
-      mileage: mileage.join(","),
-      yearBuilt: yearBuilt.join(","),
-      monthlyInstallment: monthlyInstallment.join(","),
-      companies: selectedCompanies.join(","),
-      bodyTypes: selectedBodyTypes.join(","),
+  const handleSearch = async (filters = {}) => {
+    const { title } = filters;
+    const searchParams = {
+      mileage: mileage.join(",") || undefined,
+      yearBuilt: yearBuilt.join(",") || undefined,
+      monthlyInstallment: monthlyInstallment.join(",") || undefined,
+      companies: selectedCompanies.join(",") || undefined,
+      bodyTypes: selectedBodyTypes.join(",") || undefined,
       availableNow: availableNow.toString(),
-      vehicleType: selectedVehicleType, // Changed from model to vehicleType
+      vehicleType: selectedVehicleType || undefined,
+      title: title || undefined,
     };
 
     setIsLoading(true);
     try {
       const response = await axiosInstance.get("/api/v1/cars/filter", {
-        params: filters,
+        params: searchParams,
       });
       setCars(response.data.cars || []);
+      // Scroll to CarRender after successful search
+      setTimeout(() => {
+        if (carRenderRef.current) {
+          carRenderRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100); // Small delay to ensure DOM updates
     } catch (err) {
       setCars([]);
       console.error(
@@ -167,7 +174,7 @@ const Buy = () => {
     setSelectedCompanies([]);
     setSelectedBodyTypes([]);
     setAvailableNow(false);
-    setSelectedVehicleType(""); // Updated
+    setSelectedVehicleType("");
     fetchAllCars();
   };
 
@@ -182,7 +189,7 @@ const Buy = () => {
           selectedCompanies={selectedCompanies}
           selectedBodyTypes={selectedBodyTypes}
           availableNow={availableNow}
-          selectedVehicleType={selectedVehicleType} // Updated prop name
+          selectedVehicleType={selectedVehicleType}
           carCompanies={fetchedCompanies}
           prefixedCompanies={prefixedCompanies}
           bodyTypes={bodyTypes}
@@ -192,12 +199,14 @@ const Buy = () => {
           onCompanyChange={handleCompanyChange}
           onBodyTypeChange={handleBodyTypeChange}
           onAvailabilityChange={handleAvailabilityChange}
-          onVehicleTypeChange={handleVehicleTypeChange} // Updated handler name
+          onVehicleTypeChange={handleVehicleTypeChange}
           onSearch={handleSearch}
           onReset={resetFilters}
           onYearBuiltChange={handleYearBuiltChange}
         />
-        <CarRender cars={cars} />
+        <div ref={carRenderRef}>
+          <CarRender cars={cars} />
+        </div>
       </div>
       <Footer />
     </>

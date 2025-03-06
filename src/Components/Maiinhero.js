@@ -1,5 +1,6 @@
 import React from "react";
 import arrow from "../Assets/icons/arrow.svg";
+import { Link } from "react-router-dom";
 
 export default function Mainhero() {
   return (
@@ -8,12 +9,12 @@ export default function Mainhero() {
         <h1 className="heroMainHeading">
           Quality <span>Cars</span> with <span>Unbeatable</span> Deals
         </h1>
-        <div className="heroCtaWrapper">
+        <Link to="/buy" className="heroCtaWrapper">
           <p className="ctaText">Find your dream car now</p>
           <div className="goldBg">
             <img src={arrow} alt="Redirect Link" />
           </div>
-        </div>
+        </Link>
       </div>
     </section>
   );
