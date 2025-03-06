@@ -1,9 +1,4 @@
 import React from "react";
-import youtube from "../Assets/icons/youtube.svg";
-import tiktok from "../Assets/icons/tiktok.svg";
-import linkedin from "../Assets/icons/linkedin.svg";
-import instagram from "../Assets/icons/instagram.svg";
-import facebook from "../Assets/icons/facebook.svg";
 
 export default function SecondaryHero({ bg, page, mainHeading }) {
   return (
