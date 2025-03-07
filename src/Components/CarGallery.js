@@ -7,7 +7,7 @@ import fallbackIcon from "../Assets/car icons/car.svg";
 import { Link } from "react-router-dom";
 
 export default function CarGallery({ carData }) {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
   const [currentImage, setCurrentImage] = useState(0);
   const [features, setFeatures] = useState([]);
   const [details, setDetails] = useState([]);
@@ -18,13 +18,11 @@ export default function CarGallery({ carData }) {
   useEffect(() => {
     if (!carData) return;
 
-    // Load all icons from the car icons directory
     const iconContext = require.context("../Assets/car icons", false, /\.svg$/);
     const iconFiles = iconContext.keys();
 
-    // Process features from specifications
     const featuresData = Object.entries(carData.specifications)
-      .filter(([_, value]) => value) // Only include features with true values
+      .filter(([_, value]) => value)
       .map(([featureName]) => {
         const iconName = featureName.toLowerCase().replace(/\s+/g, "-");
         const iconPath = iconFiles.find((path) =>
@@ -39,7 +37,6 @@ export default function CarGallery({ carData }) {
 
     setFeatures(featuresData);
 
-    // Process car details
     const detailsConfig = [
       { title: "Body Type", value: carData.bodyType, iconKey: "body-type" },
       { title: "Engine", value: carData.engine, iconKey: "engine" },
@@ -69,13 +66,22 @@ export default function CarGallery({ carData }) {
     setDetails(detailsData);
   }, [carData]);
 
-  // Image handling
   const images =
     carData?.images?.map((img) => ({
       id: img._id.$oid,
       src: img.path,
       alt: `Car image ${img.filename}`,
     })) || [];
+
+  const handlePrevious = () => {
+    setSelectedImageIndex((prev) =>
+      prev === 0 ? images.length - 1 : prev - 1
+    );
+  };
+
+  const handleNext = () => {
+    setSelectedImageIndex((prev) => (prev + 1) % images.length);
+  };
 
   return (
     <div className="gallery-container max-width">
@@ -91,22 +97,25 @@ export default function CarGallery({ carData }) {
             .filter(Boolean)
             .join(" ")}
         </h1>
-        {
-          carData?.saleStatus !== "sold" && (
-            <div className="action-buttons">
-              <button onClick={() => addCarToLocalStorage(carData._id, "buyNow")} className="btn">Buy Now</button>
-              <button
-                className="btn"
-                onClick={() => addCarToLocalStorage(carData._id, "testDrive")}
-              >
-                Test Drive
-              </button>
-              <Link to="/contact-us">
-                <button className="btn">Contact us</button>
-              </Link>
-            </div>
-          )
-        }
+        {carData?.saleStatus !== "sold" && (
+          <div className="action-buttons">
+            <button
+              onClick={() => addCarToLocalStorage(carData._id, "buyNow")}
+              className="btn"
+            >
+              Buy Now
+            </button>
+            <button
+              className="btn"
+              onClick={() => addCarToLocalStorage(carData._id, "testDrive")}
+            >
+              Test Drive
+            </button>
+            <Link to="/contact-us">
+              <button className="btn">Contact us</button>
+            </Link>
+          </div>
+        )}
       </header>
 
       {/* Image Gallery */}
@@ -117,7 +126,7 @@ export default function CarGallery({ carData }) {
               <img
                 src={images[currentImage].src}
                 alt={images[currentImage].alt}
-                onClick={() => setSelectedImage(images[currentImage].src)}
+                onClick={() => setSelectedImageIndex(currentImage)}
               />
             )}
           </div>
@@ -129,8 +138,9 @@ export default function CarGallery({ carData }) {
                   src={image.src}
                   alt={image.alt}
                   onClick={() => {
-                    setCurrentImage(index + 1);
-                    setSelectedImage(image.src);
+                    const newIndex = index + 1;
+                    setCurrentImage(newIndex);
+                    setSelectedImageIndex(newIndex);
                   }}
                 />
               </div>
@@ -147,7 +157,7 @@ export default function CarGallery({ carData }) {
                   alt={image.alt}
                   onClick={() => {
                     setCurrentImage(index);
-                    setSelectedImage(image.src);
+                    setSelectedImageIndex(index);
                   }}
                 />
               </div>
@@ -156,18 +166,25 @@ export default function CarGallery({ carData }) {
         </div>
 
         {/* Modal for enlarged image */}
-        {selectedImage && (
-          <div className="modal" onClick={() => setSelectedImage(null)}>
+        {selectedImageIndex !== null && (
+          <div className="modal" onClick={() => setSelectedImageIndex(null)}>
             <button className="modal-close">X</button>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
               <img
-                src={selectedImage}
+                src={images[selectedImageIndex].src}
                 alt="Enlarged car view"
                 className="modal-image"
               />
+              <button className="modal-prev" onClick={handlePrevious}>
+                <i className='bx bx-chevron-left'></i>
+              </button>
+              <button className="modal-next" onClick={handleNext}>
+                <i class='bx bx-chevron-right'></i>
+              </button>
             </div>
           </div>
         )}
+
 
         {/* Car Details Section */}
         <section className="carDetailsContainer">

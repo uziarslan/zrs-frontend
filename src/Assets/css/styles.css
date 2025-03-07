@@ -1625,6 +1625,7 @@ footer {
 }
 
 /* Modal Styles */
+/* Modal Styles */
 .modal {
     position: fixed;
     top: 0;
@@ -1635,20 +1636,23 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1000;
 }
 
 .modal-content {
     position: relative;
-    width: 90vw;
     max-width: 1200px;
     max-height: 80vh;
+    overflow: auto;
 }
 
 .modal-image {
     width: 100%;
     height: auto;
-    max-height: 80vh;
+    max-width: 100%;
+    max-height: none;
     object-fit: contain;
+    touch-action: manipulation;
 }
 
 .modal-close {
@@ -1660,6 +1664,34 @@ footer {
     color: white;
     font-size: 1.5rem;
     cursor: pointer;
+    z-index: 2;
+}
+
+.modal-prev,
+.modal-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(41, 88, 96, 0.5);
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1005;
+    transition: background 0.3s ease;
+}
+
+.modal-prev:hover,
+.modal-next:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.modal-prev {
+    left: 10px;
+}
+
+.modal-next {
+    right: 10px;
 }
 
 .carDetailsContainer {
