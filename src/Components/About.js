@@ -11,7 +11,7 @@ export default function About() {
       <div className="aboutUsContentHolder max-width">
         <div className="aboutUsHeading">
           <h2 className="aboutHeading">
-            Book a Test Drive, Experience the Thrill!
+            Feel the Excellence – Book Your Test Drive Today!
           </h2>
           <div className="subHeadingContainer">
             <p className="aboutUsSubHeading">

@@ -43,9 +43,9 @@ export default function Carlist() {
     <section className="carsForSaleSection max-width">
       <div className="carForSaleHeader">
         <div className="mainSec">
-          <h2 className="carsForSaleHeading">Explore Our Latest Arrivals – Your Next Car is Waiting</h2>
+          <h2 className="carsForSaleHeading">Explore Our Latest Arrivals</h2>
           <p className="carForSaleSubHeading">
-            Discover the newest models available at ZRS Car Trading. We bring you the best deals on a variety of high-quality vehicles to fit every style and budget.
+            Discover the latest models at ZRS, offering the best deals to suit every style and budget.
           </p>
         </div>
         <div className="secButtons">

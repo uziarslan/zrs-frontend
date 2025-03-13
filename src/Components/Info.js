@@ -9,10 +9,7 @@ export default function Info() {
   return (
     <section className="infoSection max-width">
       <h6 className="infoTextContent">
-        <span>Trust, reliability, and expertise</span> drive everything we do.
-        We focus on open communication and honest guidance, ensuring you have
-        the confidence to make well-informed decisions when buying or selling
-        your car.
+        <span>At ZRS Car Trading,</span> we believe in making car ownership easier and more accessible. Whether you're looking to buy, sell, exchange, or consign, we’re committed to providing exceptional service, quality vehicles, and seamless transactions every time.
       </h6>
       <div className="infoCustomSlider">
         <div
@@ -22,20 +19,10 @@ export default function Info() {
         >
           <h4 className="slideTitle">
             01.
-            <span>Drive the Luxury you Deserve</span>
+            <span>We Sell Cars</span>
           </h4>
           <p className="slideContent">
-            We embrace immense pride in providing a hand-picked assortment of
-            the best used luxury vehicles from the most renowned automakers
-            worldwide. Every car in our inventory goes through a thorough
-            inspection process to make sure it satisfies our high requirements
-            for performance and quality. However, our dedication to quality
-            doesn’t end there. A team of friendly experts will greet you when
-            you go into our showroom or visit our website. They are committed to
-            helping you locate the ideal vehicle to fit your tastes and way of
-            life. Whether you’re looking for an opulent sedan, an expansive SUV,
-            or a stylish sports vehicle, we have the knowledge and resources to
-            turn your vision into a reality
+            We offer a diverse selection of high-quality vehicles, including luxury, sports, and family cars. Our inventory is curated to meet the needs of every type of driver, ensuring you find the perfect match.
           </p>
         </div>
         <div
@@ -45,20 +32,10 @@ export default function Info() {
         >
           <h4 className="slideTitle">
             02.
-            <span>Buy Car With Us</span>
+            <span>We Buy Cars</span>
           </h4>
           <p className="slideContent">
-            We embrace immense pride in providing a hand-picked assortment of
-            the best used luxury vehicles from the most renowned automakers
-            worldwide. Every car in our inventory goes through a thorough
-            inspection process to make sure it satisfies our high requirements
-            for performance and quality. However, our dedication to quality
-            doesn’t end there. A team of friendly experts will greet you when
-            you go into our showroom or visit our website. They are committed to
-            helping you locate the ideal vehicle to fit your tastes and way of
-            life. Whether you’re looking for an opulent sedan, an expansive SUV,
-            or a stylish sports vehicle, we have the knowledge and resources to
-            turn your vision into a reality
+            Looking to sell your car? ZRS offers an instant, hassle-free selling process. We evaluate your car fairly and provide you with competitive offers, allowing for a fast and efficient transaction.
           </p>
         </div>
         <div
@@ -68,20 +45,10 @@ export default function Info() {
         >
           <h4 className="slideTitle">
             03.
-            <span>Sell car with us</span>
+            <span>We Exchange Cars</span>
           </h4>
           <p className="slideContent">
-            We embrace immense pride in providing a hand-picked assortment of
-            the best used luxury vehicles from the most renowned automakers
-            worldwide. Every car in our inventory goes through a thorough
-            inspection process to make sure it satisfies our high requirements
-            for performance and quality. However, our dedication to quality
-            doesn’t end there. A team of friendly experts will greet you when
-            you go into our showroom or visit our website. They are committed to
-            helping you locate the ideal vehicle to fit your tastes and way of
-            life. Whether you’re looking for an opulent sedan, an expansive SUV,
-            or a stylish sports vehicle, we have the knowledge and resources to
-            turn your vision into a reality
+            Need a new car but have one to trade in? At ZRS, we make the car exchange process easy and rewarding. We offer great exchange rates and ensure a smooth transition from your old car to your new one.
           </p>
         </div>
         <div
@@ -91,20 +58,10 @@ export default function Info() {
         >
           <h4 className="slideTitle">
             04.
-            <span>Exchange services</span>
+            <span>Consignment Services</span>
           </h4>
           <p className="slideContent">
-            We embrace immense pride in providing a hand-picked assortment of
-            the best used luxury vehicles from the most renowned automakers
-            worldwide. Every car in our inventory goes through a thorough
-            inspection process to make sure it satisfies our high requirements
-            for performance and quality. However, our dedication to quality
-            doesn’t end there. A team of friendly experts will greet you when
-            you go into our showroom or visit our website. They are committed to
-            helping you locate the ideal vehicle to fit your tastes and way of
-            life. Whether you’re looking for an opulent sedan, an expansive SUV,
-            or a stylish sports vehicle, we have the knowledge and resources to
-            turn your vision into a reality
+            We offer consignment services to help you sell your car through our showroom. Let us take care of the sale while you enjoy the peace of mind knowing your car is in good hands with our professional team.
           </p>
         </div>
       </div>

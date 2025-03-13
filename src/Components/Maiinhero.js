@@ -7,7 +7,7 @@ export default function Mainhero() {
     <section className="mainHeroSection">
       <div className="contentWrapper">
         <h1 className="heroMainHeading">
-          Quality <span>Cars</span> with <span>Unbeatable</span> Deals
+          <span>Driven </span>by <span>Quality, </span><span>Trusted </span> by You
         </h1>
         <Link to="/buy" className="heroCtaWrapper">
           <p className="ctaText">Find your dream car now</p>

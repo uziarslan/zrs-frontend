@@ -17,7 +17,7 @@ export default function About() {
         page="About us"
         mainHeading={
           <>
-            Your Trusted Destination for Quality <span>Cars & Deals.</span>
+            Your Trusted Partner in <span>Premium Car Trading</span>
           </>
         }
       />
@@ -28,3 +28,4 @@ export default function About() {
     </>
   );
 }
+

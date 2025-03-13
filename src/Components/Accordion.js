@@ -2,29 +2,29 @@ import React, { useState } from "react";
 
 const accordionData = [
   {
-    title: "What service does ZRS car Trading offer?",
+    title: "What services does ZRS Car Trading offer?",
     content:
-      "We are a free loan broker who will compete for you with the loan offers sent by banks. Just fill in the loan application form and we will send it to several banks. You can then compare the loan offers you receive on your own website and sign the contract!",
+      "ZRS offers a complete car trading experience, including buying, selling, car exchange, and consignment services. We aim to provide a seamless process tailored to meet your needs, ensuring convenience and satisfaction every time.",
   },
   {
-    title: "What service does ZRS car Trading offer?",
+    title: "How is ZRS different from other car traders?",
     content:
-      "We are a free loan broker who will compete for you with the loan offers sent by banks. Just fill in the loan application form and we will send it to several banks. You can then compare the loan offers you receive on your own website and sign the contract!",
+      "ZRS stands out because of our commitment to transparency, customer satisfaction, and quality. We offer fair prices, reliable vehicles, and flexible options, whether you’re buying, selling, or exchanging a car.",
   },
   {
-    title: "What service does ZRS car Trading offer?",
+    title: "What types of cars can I buy at ZRS?",
     content:
-      "We are a free loan broker who will compete for you with the loan offers sent by banks. Just fill in the loan application form and we will send it to several banks. You can then compare the loan offers you receive on your own website and sign the contract!",
+      "We stock a wide range of premium vehicles, including luxury cars, SUVs, sports cars, and family vehicles. Each car undergoes a thorough inspection to ensure you’re getting a high-quality vehicle.",
   },
   {
-    title: "What service does ZRS car Trading offer?",
+    title: "Can I sell my car to ZRS even if it's not in perfect condition?",
     content:
-      "We are a free loan broker who will compete for you with the loan offers sent by banks. Just fill in the loan application form and we will send it to several banks. You can then compare the loan offers you receive on your own website and sign the contract!",
+      "Yes! We buy cars in all conditions. Whether your car is in pristine condition or has some wear and tear, we’ll offer you a competitive price and ensure a fast, easy selling process.",
   },
   {
-    title: "What service does ZRS car Trading offer?",
+    title: "Why should I choose ZRS for my car exchange or consignment?",
     content:
-      "We are a free loan broker who will compete for you with the loan offers sent by banks. Just fill in the loan application form and we will send it to several banks. You can then compare the loan offers you receive on your own website and sign the contract!",
+      "At ZRS, we provide competitive exchange offers and professional consignment services. We take care of the entire process from valuation to final sale, making it easier for you to upgrade your car or sell it without the hassle.",
   },
 ];
 
@@ -37,20 +37,18 @@ const Accordion = () => {
 
   return (
     <section className="accordionSection">
-      <h2 className="accordionSectionHeading">Our Advantages</h2>
+      <h2 className="accordionSectionHeading">Why Choose ZRS Car Trading?</h2>
       <div className="accordion">
         {accordionData.map((item, index) => (
           <div
             onClick={() => toggleAccordion(index)}
             key={index}
-            className={`accordion-item ${
-              activeIndex === index ? "active" : ""
-            }`}
+            className={`accordion-item ${activeIndex === index ? "active" : ""
+              }`}
           >
             <div
-              className={`accordion-header ${
-                activeIndex === index ? "active" : ""
-              }`}
+              className={`accordion-header ${activeIndex === index ? "active" : ""
+                }`}
             >
               {item.title}
               <span className="accordion-icon">
@@ -58,9 +56,8 @@ const Accordion = () => {
               </span>
             </div>
             <div
-              className={`accordion-content ${
-                activeIndex === index ? "show" : ""
-              }`}
+              className={`accordion-content ${activeIndex === index ? "show" : ""
+                }`}
             >
               <p>{item.content}</p>
             </div>

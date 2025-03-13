@@ -17,8 +17,7 @@ export default function Footer() {
           <div className="logoAndTagLine">
             <img src={logo} alt="Logo" />
             <p className="brandTagLine">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry.
+              Buy,Sell, Exchange, or Consign – We’ve Got You Covered
             </p>
           </div>
           <div className="pagesAndContactContainer">

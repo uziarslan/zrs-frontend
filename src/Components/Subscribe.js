@@ -29,11 +29,10 @@ export default function Subscribe() {
       <Flash message={message} />
       <div className="newsletterContainer">
         <h2 className="newsLetterHeading">
-          Subscribe to Our Newsletter For Latest Updates and Promotions
+          Stay Connected with ZRS – Latest Offers & More
         </h2>
         <p className="newsLetterSubheading">
-          We have car-related blog so we can share our thought and rutinity in
-          our blog that updated weekly. We will not spam you, we promise.
+          Subscribe to our newsletter and be the first to know about new arrivals, exclusive offers, and automotive tips. Don’t miss out on exciting updates from ZRS
         </p>
         <form onSubmit={handleSubmit} className="inputAndButtonContainer">
           <input
