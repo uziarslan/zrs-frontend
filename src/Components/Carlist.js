@@ -43,25 +43,23 @@ export default function Carlist() {
     <section className="carsForSaleSection max-width">
       <div className="carForSaleHeader">
         <div className="mainSec">
-          <h2 className="carsForSaleHeading">Latest Cars for Sale</h2>
+          <h2 className="carsForSaleHeading">Explore Our Latest Arrivals – Your Next Car is Waiting</h2>
           <p className="carForSaleSubHeading">
-            Lorem Ipsum is simply dummy text
+            Discover the newest models available at ZRS Car Trading. We bring you the best deals on a variety of high-quality vehicles to fit every style and budget.
           </p>
         </div>
         <div className="secButtons">
           <button
             onClick={() => setSelectedList("sale")}
-            className={`carlistSelectedButton ${
-              selectedList === "sale" ? "active" : ""
-            }`}
+            className={`carlistSelectedButton ${selectedList === "sale" ? "active" : ""
+              }`}
           >
             For Sale
           </button>
           <button
             onClick={() => setSelectedList("testdrive")}
-            className={`carlistSelectedButton ${
-              selectedList === "testdrive" ? "active" : ""
-            }`}
+            className={`carlistSelectedButton ${selectedList === "testdrive" ? "active" : ""
+              }`}
           >
             For Test Drive
           </button>

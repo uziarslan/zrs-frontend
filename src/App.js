@@ -21,6 +21,7 @@ import Blog from "./Pages/Blog";
 import BuyNow from "./Pages/BuyNow";
 import BuyNowConfirm from "./Pages/BuyNowConfirm";
 import Liked from "./Pages/Liked";
+import Unsubscribe from "./Pages/Unsubscribe";
 
 function App() {
   const { isLoading } = useContext(AuthContext);
@@ -42,6 +43,7 @@ function App() {
         <Route path="/car/:id" element={<Car />} />
         <Route path="/buy" element={<Buy />} />
         <Route path="/blogs" element={<AllBlogs />} />
+        <Route path="/unsubscribe/:id" element={<Unsubscribe />} />
         <Route path="/blog/:id" element={<Blog />} />
         <Route path="/buy-now-form" element={<BuyNow />} />
         <Route path="/buy-now-confirm" element={<BuyNowConfirm />} />

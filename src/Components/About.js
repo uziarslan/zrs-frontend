@@ -15,11 +15,10 @@ export default function About() {
           </h2>
           <div className="subHeadingContainer">
             <p className="aboutUsSubHeading">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry.
+              Whether you’re looking for a luxury SUV or a compact car, our expert team is here to help you find the perfect ride for your needs.
             </p>
             <Link to="/test-drive" className="aboutUsCta">
-              <p>Book a Test Drive</p>
+              <p>Schedule Your Test Drive</p>
               <div className="greenBg">
                 <img src={arrowsm} alt="Arrow Icon" />
               </div>
