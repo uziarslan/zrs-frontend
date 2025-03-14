@@ -2758,3 +2758,9 @@ h2 {
         min-width: auto;
     }
 }
+
+@media(max-height: 600px) {
+    .contentWrapper {
+        margin-bottom: 90px;
+    }
+}
