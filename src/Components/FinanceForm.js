@@ -94,15 +94,15 @@ const FinanceForm = () => {
   // Filter vehicle types based on selected manufacturer
   const filteredVehicleTypes = formData.manufacturer
     ? vehicleTypes.filter(
-        (vt) => vt.manufacturer.brandName === formData.manufacturer
-      )
+      (vt) => vt.manufacturer.brandName === formData.manufacturer
+    )
     : vehicleTypes;
 
   return (
     <div className="sellcontainer max-width">
-      <h1 className="title">FINANCE ELIGIBILITY</h1>
+      <h1 className="title">Flexible Financing to Suit Your Needs</h1>
       <form className="form" onSubmit={handleSubmit}>
-        <p className="subtitle">Fill All Detail About You & Your Car</p>
+        <p className="subtitle">Fill out the form below to tell us about your car and yourself.</p>
         <div className="formInputWrapper">
           <div className="formGrid">
             {/* Manufacturer */}

@@ -119,7 +119,7 @@ const SellCar = () => {
     <div className="sellcontainer max-width">
       <h1 className="title">SELL YOUR CAR</h1>
       <form className="form" onSubmit={handleSubmit}>
-        <p className="subtitle">Fill All Detail About You & Your Car</p>
+        <p className="subtitle">Fill out the form below to tell us about your car and yourself.</p>
         <div className="formInputWrapper">
           <div className="formGrid">
             {/* Manufacturer */}

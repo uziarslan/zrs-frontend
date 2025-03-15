@@ -1,14 +1,14 @@
-import React, {useEffect, useContext} from "react";
+import React, { useEffect, useContext } from "react";
 import Navbar from "../Components/Navbar";
 import SecondaryHero from "../Components/SecondaryHero";
 import Footer from "../Components/Footer";
 import secondaryHero2 from "../Assets/images/secondaryHero2.jpg";
 import ContactForm from "../Components/ContactForm";
-import {AuthContext} from "../Context/AuthContext";
+import { AuthContext } from "../Context/AuthContext";
 
 export default function Contact() {
-  const {setIsLoading} = useContext(AuthContext);
-  
+  const { setIsLoading } = useContext(AuthContext);
+
   useEffect(() => {
     setIsLoading(false);
   }, [setIsLoading]);
@@ -21,7 +21,7 @@ export default function Contact() {
         page="Contact us"
         mainHeading={
           <>
-            Got Questions? We’ve Got the Keys <span>to Your Answers!</span>
+            Always <span>available</span> for you!
           </>
         }
       />

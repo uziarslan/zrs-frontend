@@ -15,8 +15,7 @@ export default function Finance() {
         page="Finance"
         mainHeading={
           <>
-            Own Your Car with Confidence –
-            <span>Simple & Secure Financing! Luxury</span>
+            Drive Your Dream Car with <span>Easy Financing</span> Options
           </>
         }
       />

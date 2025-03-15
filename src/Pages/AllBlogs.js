@@ -21,7 +21,7 @@ export default function AllBlogs() {
                 page="Blogs"
                 mainHeading={
                     <>
-                        Smart Deals, Smooth Rides – Your Ultimate <span>Car Buying Guide!</span>
+                        Your Ultimate Car Guide – <span>Expert Tips, Trends</span> and More
                     </>
                 }
             />
@@ -30,5 +30,6 @@ export default function AllBlogs() {
         </>
     );
 }
+
 
 

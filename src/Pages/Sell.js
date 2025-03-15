@@ -15,7 +15,7 @@ export default function Sell() {
         page="Sell"
         mainHeading={
           <>
-            Luxury, Performance & Savings—All <span>in One Place</span>
+            Sell Your Car with Ease – <span>Fast, Fair, and Transparent!</span>
           </>
         }
       />

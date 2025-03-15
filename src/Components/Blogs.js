@@ -37,8 +37,8 @@ export default function Blogs() {
   return (
     <section className="blogsSection max-width">
       <div className="blogsHeaderContainer">
-        <h2 className="blogsHeading">Our Recent Articles</h2>
-        <p className="blosSubHeading">Stay Informed with Our Latest Insights</p>
+        <h2 className="blogsHeading">Stay Informed with ZRS Car Trading Insights</h2>
+        <p className="blosSubHeading">Explore the latest car trends, tips, and expert advice from the world of automobiles.</p>
       </div>
       <div className="blogContainer">
         {blogs.length && blogs.map(blog => (

@@ -1103,7 +1103,7 @@ footer {
 
 .title {
     font-weight: 600;
-    font-size: 4rem;
+    font-size: 3rem;
     line-height: 88px;
     letter-spacing: -3%;
     text-align: center;
@@ -1112,7 +1112,7 @@ footer {
 
 .subtitle {
     font-weight: 500;
-    font-size: 2rem;
+    font-size: 1.5rem;
     letter-spacing: -3%;
     text-align: center;
     margin: 0;
@@ -2433,10 +2433,6 @@ h2 {
     .title {
         font-size: 2.5rem;
         line-height: 60px;
-    }
-
-    .subtitle {
-        font-size: 1.5rem;
     }
 
     .form {
