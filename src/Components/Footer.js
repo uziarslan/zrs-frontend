@@ -45,6 +45,9 @@ export default function Footer() {
                 <li>
                   <Link className="footerLinks" to="/contact-us">Contact</Link>
                 </li>
+                <li>
+                  <Link className="footerLinks" to="/privacy-policy">Privacy Policy</Link>
+                </li>
               </ul>
             </div>
             <div>
