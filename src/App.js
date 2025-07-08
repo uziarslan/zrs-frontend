@@ -22,6 +22,7 @@ import BuyNow from "./Pages/BuyNow";
 import BuyNowConfirm from "./Pages/BuyNowConfirm";
 import Liked from "./Pages/Liked";
 import Unsubscribe from "./Pages/Unsubscribe";
+import PrivacyPolicy from "./Pages/PrivacyPolicy";
 
 function App() {
   const { isLoading } = useContext(AuthContext);
@@ -48,6 +49,7 @@ function App() {
         <Route path="/buy-now-form" element={<BuyNow />} />
         <Route path="/buy-now-confirm" element={<BuyNowConfirm />} />
         <Route path="/likes" element={<Liked />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
     </div>
   );
