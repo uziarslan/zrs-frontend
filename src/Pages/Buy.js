@@ -6,7 +6,23 @@ import axiosInstance from "../services/axiosInstance";
 import CarRender from "../Components/CarsRender";
 import Footer from "../Components/Footer";
 
-const prefixedCompanies = ["BMW", "Audi", "Bentley", "GMC", "Jaguar"];
+const prefixedCompanies = [
+  "BMW",
+  "Audi",
+  "Bentley",
+  "GMC",
+  "Jaguar",
+  "Mercedes",
+  "Ford",
+  "Tesla",
+  "Nissan",
+  "Mitsubishi",
+  "Land Rover",
+  "Chevrolet",
+  "Dodge",
+  "Lamborghini",
+  "Porsche"
+];
 
 const bodyTypes = [
   "All types",
@@ -181,31 +197,38 @@ const Buy = () => {
   return (
     <>
       <Navbar page="buy" />
-      <div className="filteredSearchSection max-width">
-        <CarFilters
-          mileage={mileage}
-          yearBuilt={yearBuilt}
-          monthlyInstallment={monthlyInstallment}
-          selectedCompanies={selectedCompanies}
-          selectedBodyTypes={selectedBodyTypes}
-          availableNow={availableNow}
-          selectedVehicleType={selectedVehicleType}
-          carCompanies={fetchedCompanies}
-          prefixedCompanies={prefixedCompanies}
-          bodyTypes={bodyTypes}
-          vehicleTypes={vehicleTypes}
-          onMileageChange={handleMileageChange}
-          onInstallmentChange={handleInstallmentChange}
-          onCompanyChange={handleCompanyChange}
-          onBodyTypeChange={handleBodyTypeChange}
-          onAvailabilityChange={handleAvailabilityChange}
-          onVehicleTypeChange={handleVehicleTypeChange}
-          onSearch={handleSearch}
-          onReset={resetFilters}
-          onYearBuiltChange={handleYearBuiltChange}
-        />
-        <div ref={carRenderRef}>
-          <CarRender cars={cars} />
+      <div className="pt-32 pb-20 bg-gradient-to-b from-white to-gray-50">
+        <div className="max-w-7xl mx-auto px-5">
+          <div className="flex gap-8">
+            {/* Filters Sidebar */}
+            <CarFilters
+              mileage={mileage}
+              yearBuilt={yearBuilt}
+              monthlyInstallment={monthlyInstallment}
+              selectedCompanies={selectedCompanies}
+              selectedBodyTypes={selectedBodyTypes}
+              availableNow={availableNow}
+              selectedVehicleType={selectedVehicleType}
+              carCompanies={fetchedCompanies}
+              prefixedCompanies={prefixedCompanies}
+              bodyTypes={bodyTypes}
+              vehicleTypes={vehicleTypes}
+              onMileageChange={handleMileageChange}
+              onInstallmentChange={handleInstallmentChange}
+              onCompanyChange={handleCompanyChange}
+              onBodyTypeChange={handleBodyTypeChange}
+              onAvailabilityChange={handleAvailabilityChange}
+              onVehicleTypeChange={handleVehicleTypeChange}
+              onSearch={handleSearch}
+              onReset={resetFilters}
+              onYearBuiltChange={handleYearBuiltChange}
+            />
+
+            {/* Cars Grid */}
+            <div ref={carRenderRef} className="flex-1">
+              <CarRender cars={cars} />
+            </div>
+          </div>
         </div>
       </div>
       <Footer />

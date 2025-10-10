@@ -132,15 +132,6 @@ export default function Footer() {
                   </a>
                 </li>
               </ul>
-
-              {/* Trust Badge */}
-              <div className="mt-5 inline-flex items-center gap-2 bg-gold/20 backdrop-blur-sm px-3 py-2 rounded-full border border-gold/30">
-                <span className="text-lg">⭐</span>
-                <div className="text-xs">
-                  <div className="font-bold text-gold">4.9/5.0</div>
-                  <div className="text-white/70 text-[10px]">1000+ Reviews</div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

@@ -2,6 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgba(41, 88, 96, 0.2);
+    border-radius: 10px;
+  }
+  
+  .scrollbar-thin:hover::-webkit-scrollbar-thumb {
+    background: rgba(41, 88, 96, 0.4);
+  }
+  
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(41, 88, 96, 0.2) transparent;
+  }
+}
+
+/* Blog Content Styling */
+.blog-content h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #295860;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.blog-content p {
+  margin-bottom: 1.25rem;
+  color: #4B5563;
+}
+
+.blog-content strong {
+  color: #1F2937;
+  font-weight: 600;
+}
+
 html {
   font-size: 17px;
   font-family: "Urbanist";

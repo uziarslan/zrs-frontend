@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../Assets/images/logo.png";
-import like from "../Assets/icons/like.svg";
+import { AuthContext } from "../Context/AuthContext";
 
 export default function Navbar({ page }) {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { favoriteCars } = useContext(AuthContext);
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
@@ -63,21 +64,31 @@ export default function Navbar({ page }) {
               ))}
             </div>
 
-            {/* Right Side - Heart Icon & Mobile Menu */}
+            {/* Right Side - Favorites & Mobile Menu */}
             <div className="flex items-center gap-3">
-              {/* Heart/Like Button */}
+              {/* Favorites/Garage Button */}
               <Link
                 to="/likes"
-                className="relative p-2 rounded-full bg-primary/10 hover:bg-primary hover:shadow-lg transition-all duration-300 group"
+                className="relative p-2 rounded-full bg-primary/10 hover:bg-primary transition-all duration-300 group"
               >
-                <img
-                  src={like}
-                  alt="Liked Cars"
-                  className="w-5 h-5 group-hover:scale-110 transition-transform"
-                />
-                <span className="absolute -top-1 -right-1 w-4 h-4 bg-gold text-white text-[10px] font-bold rounded-full flex items-center justify-center">
-                  0
-                </span>
+                <svg
+                  className="w-5 h-5 text-primary group-hover:text-white transition-colors"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
+                  />
+                </svg>
+                {favoriteCars.length > 0 && (
+                  <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 bg-gold text-white text-[10px] font-bold rounded-full flex items-center justify-center">
+                    {favoriteCars.length}
+                  </span>
+                )}
               </Link>
 
               {/* Mobile Menu Button */}
