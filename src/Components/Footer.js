@@ -10,82 +10,154 @@ import facebook from "../Assets/icons/facebook.svg";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
+  const socialLinks = [
+    { icon: youtube, name: "YouTube", url: "#" },
+    { icon: tiktok, name: "TikTok", url: "#" },
+    { icon: linkedin, name: "LinkedIn", url: "#" },
+    { icon: instagram, name: "Instagram", url: "#" },
+    { icon: facebook, name: "Facebook", url: "#" },
+  ];
+
+  const quickLinks = [
+    { name: "Home", to: "/" },
+    { name: "About Us", to: "/about" },
+    { name: "Buy Cars", to: "/buy" },
+    { name: "Sell Cars", to: "/sell" },
+  ];
+
+  const resources = [
+    { name: "Blogs", to: "/blogs" },
+    { name: "Finance", to: "/finance" },
+    { name: "Contact", to: "/contact-us" },
+    { name: "Privacy Policy", to: "/privacy-policy" },
+  ];
+
   return (
-    <footer>
-      <div className="footerContentContainer max-width">
-        <div className="footerContent">
-          <div className="logoAndTagLine">
-            <img src={logo} alt="Logo" />
-            <p className="brandTagLine">
-              Buy,Sell, Exchange, or Consign – We’ve Got You Covered
-            </p>
-          </div>
-          <div className="pagesAndContactContainer">
+    <footer className="bg-gradient-to-br from-primary via-primary-dark to-primary text-white">
+      <div className="max-w-7xl mx-auto px-5">
+        {/* Main Footer Content */}
+        <div className="py-12 md:py-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+            {/* Brand Column */}
+            <div className="lg:col-span-1">
+              <Link to="/" className="inline-block mb-4 group">
+                <img
+                  src={logo}
+                  alt="ZRS Logo"
+                  className="h-16 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+                />
+              </Link>
+              <p className="text-white/80 text-sm leading-relaxed mb-5">
+                Buy, Sell, Exchange, or Consign – We've Got You Covered
+              </p>
+
+              {/* Social Links */}
+              <div className="flex gap-2">
+                {socialLinks.map((social, index) => (
+                  <a
+                    key={index}
+                    href={social.url}
+                    className="w-9 h-9 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-gold hover:border-gold transition-all duration-300 hover:scale-110 group"
+                    aria-label={social.name}
+                  >
+                    <img
+                      src={social.icon}
+                      alt={social.name}
+                      className="w-4 h-4 group-hover:scale-110 transition-transform"
+                    />
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Quick Links */}
             <div>
-              <h6 className="colHeading">ZRS CARS TRADING</h6>
-              <ul className="footerList">
-                <li>
-                  <Link className="footerLinks" to="/">Home</Link>
-                </li>
-                <li>
-                  <Link className="footerLinks" to="/about">About us</Link>
-                </li>
-                <li>
-                  <Link className="footerLinks" to="/sell">Sell</Link>
-                </li>
-                <li>
-                  <Link className="footerLinks" to="/buy">Buy</Link>
-                </li>
-                <li>
-                  <Link className="footerLinks" to="/blogs">Blogs</Link>
-                </li>
-                <li>
-                  <Link className="footerLinks" to="/finance">Finance</Link>
-                </li>
-                <li>
-                  <Link className="footerLinks" to="/contact-us">Contact</Link>
-                </li>
-                <li>
-                  <Link className="footerLinks" to="/privacy-policy">Privacy Policy</Link>
-                </li>
+              <h3 className="text-base font-bold mb-4 text-gold">Quick Links</h3>
+              <ul className="space-y-2">
+                {quickLinks.map((link, index) => (
+                  <li key={index}>
+                    <Link
+                      to={link.to}
+                      className="text-sm text-white/80 hover:text-gold transition-colors duration-300 flex items-center gap-2 group"
+                    >
+                      <span className="w-0 group-hover:w-2 h-0.5 bg-gold transition-all duration-300"></span>
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
+
+            {/* Resources */}
             <div>
-              <h6 className="colHeading">Contact</h6>
-              <ul className="footerList">
-                <li>
-                  <img src={location} alt="Location icon" />
-                  <span>
-                    ALYA & AMIRA COMPLEX ,SHED 4 - DUBAI INVESTMENT PARK-1-DUBAI
+              <h3 className="text-base font-bold mb-4 text-gold">Resources</h3>
+              <ul className="space-y-2">
+                {resources.map((link, index) => (
+                  <li key={index}>
+                    <Link
+                      to={link.to}
+                      className="text-sm text-white/80 hover:text-gold transition-colors duration-300 flex items-center gap-2 group"
+                    >
+                      <span className="w-0 group-hover:w-2 h-0.5 bg-gold transition-all duration-300"></span>
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact Info */}
+            <div>
+              <h3 className="text-base font-bold mb-4 text-gold">Contact Us</h3>
+              <ul className="space-y-3">
+                <li className="flex gap-2 items-start group">
+                  <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold transition-colors">
+                    <img src={location} alt="Location" className="w-4 h-4" />
+                  </div>
+                  <span className="text-white/80 text-xs leading-relaxed">
+                    ALYA & AMIRA COMPLEX, SHED 4<br />
+                    DUBAI INVESTMENT PARK-1<br />
+                    DUBAI
                   </span>
                 </li>
-                <li>
-                  <img src={phone} alt="Phone Icon" />
-                  <span>0562691573</span>
+                <li className="flex gap-2 items-center group">
+                  <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold transition-colors">
+                    <img src={phone} alt="Phone" className="w-4 h-4" />
+                  </div>
+                  <a
+                    href="tel:0562691573"
+                    className="text-white/80 text-sm hover:text-gold transition-colors"
+                  >
+                    0562691573
+                  </a>
                 </li>
               </ul>
+
+              {/* Trust Badge */}
+              <div className="mt-5 inline-flex items-center gap-2 bg-gold/20 backdrop-blur-sm px-3 py-2 rounded-full border border-gold/30">
+                <span className="text-lg">⭐</span>
+                <div className="text-xs">
+                  <div className="font-bold text-gold">4.9/5.0</div>
+                  <div className="text-white/70 text-[10px]">1000+ Reviews</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div className="copyRightContent">
-          <div className="copyRightText">
-            &copy; All Copyright 2024 by ZRS CARS
-          </div>
-          <div className="socialIcons">
-            <div className="socialIconWrapper">
-              <img src={youtube} alt="Youtube Social Link" />
-            </div>
-            <div className="socialIconWrapper">
-              <img src={tiktok} alt="Tiktok Social Link" />
-            </div>
-            <div className="socialIconWrapper">
-              <img src={linkedin} alt="LinkedIn Social Link" />
-            </div>
-            <div className="socialIconWrapper">
-              <img src={instagram} alt="Instagram Social Link" />
-            </div>
-            <div className="socialIconWrapper">
-              <img src={facebook} alt="Facebook Social Link" />
+
+        {/* Bottom Bar */}
+        <div className="border-t border-white/10 py-5">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3 text-xs">
+            <p className="text-white/60">
+              © {new Date().getFullYear()} ZRS CARS TRADING. All rights reserved.
+            </p>
+            <div className="flex gap-5 text-white/60">
+              <Link to="/privacy-policy" className="hover:text-gold transition-colors">
+                Privacy Policy
+              </Link>
+              <Link to="/terms" className="hover:text-gold transition-colors">
+                Terms of Service
+              </Link>
             </div>
           </div>
         </div>

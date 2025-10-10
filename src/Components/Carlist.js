@@ -6,12 +6,11 @@ import { AuthContext } from "../Context/AuthContext";
 export default function Carlist() {
   const [selectedList, setSelectedList] = useState("sale");
   const [featuredCars, setFeaturedCars] = useState([]);
-  const { setIsLoading } = useContext(AuthContext); // Get setIsLoading from AuthContext
+  const { setIsLoading } = useContext(AuthContext);
 
-  // Fetch featured cars when the component mounts
   useEffect(() => {
     const fetchFeaturedCars = async () => {
-      setIsLoading(true); // Set loading state via AuthContext
+      setIsLoading(true);
       try {
         const response = await axiosInstance.get("/api/v1/cars/featured", {
           params: { featured: "yes" },
@@ -22,14 +21,13 @@ export default function Carlist() {
       } catch (err) {
         console.error("Error fetching featured cars:", err);
       } finally {
-        setIsLoading(false); // Reset loading state
+        setIsLoading(false);
       }
     };
 
     fetchFeaturedCars();
-  }, [setIsLoading]); // Add setIsLoading to dependency array
+  }, [setIsLoading]);
 
-  // Filter cars based on selectedList
   const filteredCars = featuredCars.filter((car) => {
     if (selectedList === "sale") {
       return car.featured === "yes";
@@ -40,32 +38,45 @@ export default function Carlist() {
   });
 
   return (
-    <section className="carsForSaleSection max-width">
-      <div className="carForSaleHeader">
-        <div className="mainSec">
-          <h2 className="carsForSaleHeading">Explore Our Latest Arrivals</h2>
-          <p className="carForSaleSubHeading">
-            Discover the latest models at ZRS, offering the best deals to suit every style and budget.
+    <section className="pt-12 md:pt-16 pb-16 md:pb-20 bg-white">
+      <div className="max-w-7xl mx-auto px-5">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <span className="inline-block bg-primary/10 text-primary px-4 py-1.5 rounded-full font-semibold text-xs mb-4">
+            OUR COLLECTION
+          </span>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary-dark mb-4">
+            Explore Latest Arrivals
+          </h2>
+          <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto mb-8">
+            Discover the latest models at ZRS, offering the best deals to suit every style and budget
           </p>
+
+          {/* Filter Tabs */}
+          <div className="inline-flex bg-gray-100 p-1.5 rounded-full gap-2">
+            <button
+              onClick={() => setSelectedList("sale")}
+              className={`px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 ${selectedList === "sale"
+                ? "bg-primary text-white shadow-lg"
+                : "bg-transparent text-gray-600 hover:text-primary"
+                }`}
+            >
+              For Sale
+            </button>
+            <button
+              onClick={() => setSelectedList("testdrive")}
+              className={`px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 ${selectedList === "testdrive"
+                ? "bg-primary text-white shadow-lg"
+                : "bg-transparent text-gray-600 hover:text-primary"
+                }`}
+            >
+              Test Drive Available
+            </button>
+          </div>
         </div>
-        <div className="secButtons">
-          <button
-            onClick={() => setSelectedList("sale")}
-            className={`carlistSelectedButton ${selectedList === "sale" ? "active" : ""
-              }`}
-          >
-            For Sale
-          </button>
-          <button
-            onClick={() => setSelectedList("testdrive")}
-            className={`carlistSelectedButton ${selectedList === "testdrive" ? "active" : ""
-              }`}
-          >
-            For Test Drive
-          </button>
-        </div>
+
+        <Cars cars={filteredCars} />
       </div>
-      <Cars cars={filteredCars} />
     </section>
   );
 }
