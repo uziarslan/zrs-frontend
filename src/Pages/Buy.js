@@ -200,7 +200,7 @@ const Buy = () => {
       <div className="pt-32 pb-20 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto px-5">
           <div className="flex gap-8">
-            {/* Filters Sidebar */}
+            {/* Filters Sidebar - Hidden on mobile (renders as fixed overlay) */}
             <CarFilters
               mileage={mileage}
               yearBuilt={yearBuilt}
@@ -224,8 +224,8 @@ const Buy = () => {
               onYearBuiltChange={handleYearBuiltChange}
             />
 
-            {/* Cars Grid */}
-            <div ref={carRenderRef} className="flex-1">
+            {/* Cars Grid - Full width on mobile */}
+            <div ref={carRenderRef} className="flex-1 w-full md:w-auto">
               <CarRender cars={cars} />
             </div>
           </div>

@@ -72,6 +72,10 @@ const CarFilters = ({
 
   const handleSearch = () => {
     onSearch({ title: searchTitle.trim() });
+    // Close filters on mobile after search
+    if (isMobile) {
+      setIsContainerOpen(false);
+    }
   };
 
   const handleSearchKeyPress = (e) => {
@@ -96,10 +100,10 @@ const CarFilters = ({
   return (
     <>
       {/* Mobile Filter Button */}
-      {isMobile && (
+      {isMobile && !isContainerOpen && (
         <button
           onClick={toggleContainer}
-          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-full shadow-2xl hover:bg-primary-dark transition-all duration-300 font-semibold text-sm"
+          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[1100] flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-full shadow-2xl hover:bg-primary-dark transition-all duration-300 font-semibold text-sm"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
@@ -108,19 +112,43 @@ const CarFilters = ({
         </button>
       )}
 
+      {/* Overlay for mobile */}
+      {isMobile && isContainerOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-[1100]"
+          onClick={toggleContainer}
+        />
+      )}
+
       {/* Compact Filters Sidebar */}
       <div
         ref={filtersWrapperRef}
-        className={`transition-all duration-300 w-full ${isContainerOpen ? 'max-w-[280px] opacity-100' : 'max-w-0 opacity-0 overflow-hidden md:max-w-[280px] md:opacity-100'
+        className={`transition-all duration-300 ${isMobile
+          ? `fixed top-0 right-0 h-full w-full bg-white z-[1200] transform ${isContainerOpen ? 'translate-x-0' : 'translate-x-full'
+          }`
+          : 'w-full max-w-[280px]'
           }`}
       >
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-5 sticky top-28">
+        <div className={`bg-white ${isMobile ? 'h-full flex flex-col' : 'rounded-2xl shadow-lg border border-gray-100 sticky top-28'} p-5`}>
           {/* Header */}
           <div className="flex items-center justify-between mb-5">
             <h2 className="text-base font-bold text-primary-dark">Filters</h2>
-            <button onClick={handleReset} className="text-xs text-gray-500 hover:text-primary transition-colors font-medium">
-              Reset All
-            </button>
+            <div className="flex items-center gap-2">
+              <button onClick={handleReset} className="text-xs text-gray-500 hover:text-primary transition-colors font-medium">
+                Reset All
+              </button>
+              {isMobile && (
+                <button
+                  onClick={toggleContainer}
+                  className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+                  aria-label="Close filters"
+                >
+                  <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              )}
+            </div>
           </div>
 
           {/* Search Input */}
@@ -138,7 +166,7 @@ const CarFilters = ({
             </svg>
           </div>
 
-          <div className="space-y-4 max-h-[calc(100vh-280px)] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent hover:scrollbar-thumb-primary/40">
+          <div className={`space-y-4 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent hover:scrollbar-thumb-primary/40 ${isMobile ? 'flex-1' : 'max-h-[calc(100vh-280px)]'}`}>
             {/* Company Filter */}
             <div className="border-b border-gray-100 pb-4">
               <button
@@ -436,15 +464,17 @@ const CarFilters = ({
           </div>
 
           {/* Search Button */}
-          <button
-            onClick={handleSearch}
-            className="w-full flex items-center justify-center gap-1.5 bg-primary text-white px-4 py-2.5 rounded-lg font-semibold text-xs hover:bg-primary-dark transition-all duration-300 mt-5"
-          >
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-            Search Cars
-          </button>
+          <div className={isMobile ? 'pt-4 border-t border-gray-200' : 'mt-5'}>
+            <button
+              onClick={handleSearch}
+              className="w-full flex items-center justify-center gap-1.5 bg-primary text-white px-4 py-2.5 rounded-lg font-semibold text-xs hover:bg-primary-dark transition-all duration-300"
+            >
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              Search Cars
+            </button>
+          </div>
         </div>
       </div>
     </>
