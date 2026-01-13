@@ -14,11 +14,32 @@ export default function CarRender({ cars }) {
 
     const { addCarToFavorites, removeCarFromFavorites, isCarFavorite } = useContext(AuthContext);
 
-    const totalItems = Array.isArray(cars) ? cars.length : 0;
+    // Sort cars: Featured first, then normal, then sold
+    const sortedCars = Array.isArray(cars) ? [...cars].sort((a, b) => {
+        // Featured cars (not sold) get priority 1
+        const aIsFeatured = a.featured === "yes" && a.saleStatus !== "sold";
+        const bIsFeatured = b.featured === "yes" && b.saleStatus !== "sold";
+        
+        // Sold cars get priority 3
+        const aIsSold = a.saleStatus === "sold";
+        const bIsSold = b.saleStatus === "sold";
+        
+        // Normal cars (not featured, not sold) get priority 2
+        const aIsNormal = !aIsFeatured && !aIsSold;
+        const bIsNormal = !bIsFeatured && !bIsSold;
+        
+        // Determine priority for each car
+        const aPriority = aIsFeatured ? 1 : (aIsNormal ? 2 : 3);
+        const bPriority = bIsFeatured ? 1 : (bIsNormal ? 2 : 3);
+        
+        return aPriority - bPriority;
+    }) : [];
+
+    const totalItems = sortedCars.length;
     const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentCars = Array.isArray(cars) ? cars.slice(indexOfFirstItem, indexOfLastItem) : [];
+    const currentCars = sortedCars.slice(indexOfFirstItem, indexOfLastItem);
 
     useEffect(() => {
         setCurrentPage(1);
