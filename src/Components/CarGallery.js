@@ -303,7 +303,7 @@ export default function CarGallery({ carData }) {
                 <h3 className="text-sm md:text-base font-bold mb-2 md:mb-4">Need Help?</h3>
                 <p className="text-xs md:text-sm text-white/90 mb-3 md:mb-4">Our team is ready to assist you</p>
                 <a
-                  href="tel:0562691573"
+                  href="tel:+971563890299"
                   className="flex items-center justify-center gap-2 bg-white text-primary px-4 md:px-5 py-2.5 md:py-3 rounded-full font-bold text-xs md:text-sm hover:bg-gold hover:text-white transition-all duration-300 no-underline"
                 >
                   <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

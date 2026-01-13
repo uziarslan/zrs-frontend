@@ -177,11 +177,11 @@ export default function ContactForm() {
                   </div>
                   <div>
                     <h4 className="text-sm font-bold text-primary-dark mb-2">Call Us</h4>
-                    <a href="tel:+971555313061" className="block text-sm text-gray-600 hover:text-primary transition-colors mb-1 no-underline">
-                      +971 555313061
+                    <a href="tel:+971563890299" className="block text-sm text-gray-600 hover:text-primary transition-colors mb-1 no-underline">
+                      +971 56 389 0299
                     </a>
-                    <a href="tel:0562691573" className="block text-sm text-gray-600 hover:text-primary transition-colors no-underline">
-                      0562691573
+                    <a href="tel:+971555313061" className="block text-sm text-gray-600 hover:text-primary transition-colors no-underline">
+                      +971 55 531 3061
                     </a>
                   </div>
                 </div>
@@ -195,8 +195,8 @@ export default function ContactForm() {
                   </div>
                   <div>
                     <h4 className="text-sm font-bold text-primary-dark mb-2">Email Us</h4>
-                    <a href="mailto:info@zrsholding.ae" className="text-sm text-gray-600 hover:text-primary transition-colors no-underline">
-                      info@zrsholding.ae
+                    <a href="mailto:syedmaaz@zrscarstrading.com" className="text-sm text-gray-600 hover:text-primary transition-colors no-underline">
+                      syedmaaz@zrscarstrading.com
                     </a>
                   </div>
                 </div>

@@ -125,10 +125,10 @@ export default function Footer() {
                     <img src={phone} alt="Phone" className="w-4 h-4" />
                   </div>
                   <a
-                    href="tel:0562691573"
+                    href="tel:+971563890299"
                     className="text-white/80 text-sm hover:text-gold transition-colors"
                   >
-                    0562691573
+                    +971 56 389 0299
                   </a>
                 </li>
               </ul>
