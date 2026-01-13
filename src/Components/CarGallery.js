@@ -11,6 +11,12 @@ export default function CarGallery({ carData }) {
 
   const { addCarToLocalStorage, addCarToFavorites, removeCarFromFavorites, isCarFavorite } = useContext(AuthContext);
 
+  // Helper function to format numbers with commas
+  const formatPrice = (price) => {
+    if (!price) return "0";
+    return Number(price).toLocaleString('en-US');
+  };
+
   // Load icons and process data
   useEffect(() => {
     if (!carData) return;
@@ -206,11 +212,11 @@ export default function CarGallery({ carData }) {
                 <div className="mb-4 md:mb-6 w-full">
                   <div className="flex items-baseline gap-2 md:gap-3 flex-wrap w-full">
                     <span className="text-xl md:text-2xl lg:text-3xl font-black text-primary break-all">
-                      AED {carData.discountedPrice || carData.originalPrice}
+                      AED {formatPrice(carData.discountedPrice || carData.originalPrice)}
                     </span>
                     {carData.discountedPrice && (
                       <span className="text-base md:text-lg text-gray-400 line-through break-all">
-                        AED {carData.originalPrice}
+                        AED {formatPrice(carData.originalPrice)}
                       </span>
                     )}
                   </div>

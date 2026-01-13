@@ -14,6 +14,12 @@ export default function CarRender({ cars }) {
 
     const { addCarToFavorites, removeCarFromFavorites, isCarFavorite } = useContext(AuthContext);
 
+    // Helper function to format numbers with commas
+    const formatPrice = (price) => {
+        if (!price) return "0";
+        return Number(price).toLocaleString('en-US');
+    };
+
     // Sort cars: Featured first, then normal, then sold
     const sortedCars = Array.isArray(cars) ? [...cars].sort((a, b) => {
         // Featured cars (not sold) get priority 1
@@ -238,12 +244,12 @@ export default function CarRender({ cars }) {
                                         <div className="flex items-center gap-2">
                                             <div className="bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20">
                                                 <span className="text-white font-bold text-base">
-                                                    AED {car.discountedPrice || car.originalPrice}
+                                                    AED {formatPrice(car.discountedPrice || car.originalPrice)}
                                                 </span>
                                             </div>
                                             {car.discountedPrice && (
                                                 <span className="text-white/70 line-through text-xs">
-                                                    AED {car.originalPrice}
+                                                    AED {formatPrice(car.originalPrice)}
                                                 </span>
                                             )}
                                         </div>

@@ -18,13 +18,38 @@ export default function Cars({ cars }) {
     isCarFavorite
   } = useContext(AuthContext);
 
-  const totalItems = Array.isArray(cars) ? cars.length : 0;
+  // Helper function to format numbers with commas
+  const formatPrice = (price) => {
+    if (!price) return "0";
+    return Number(price).toLocaleString('en-US');
+  };
+
+  // Sort cars: Featured first, then normal, then sold
+  const sortedCars = Array.isArray(cars) ? [...cars].sort((a, b) => {
+    // Featured cars (not sold) get priority 1
+    const aIsFeatured = a.featured === "yes" && a.saleStatus !== "sold";
+    const bIsFeatured = b.featured === "yes" && b.saleStatus !== "sold";
+    
+    // Sold cars get priority 3
+    const aIsSold = a.saleStatus === "sold";
+    const bIsSold = b.saleStatus === "sold";
+    
+    // Normal cars (not featured, not sold) get priority 2
+    const aIsNormal = !aIsFeatured && !aIsSold;
+    const bIsNormal = !bIsFeatured && !bIsSold;
+    
+    // Determine priority for each car
+    const aPriority = aIsFeatured ? 1 : (aIsNormal ? 2 : 3);
+    const bPriority = bIsFeatured ? 1 : (bIsNormal ? 2 : 3);
+    
+    return aPriority - bPriority;
+  }) : [];
+
+  const totalItems = sortedCars.length;
   const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentCars = Array.isArray(cars)
-    ? cars.slice(indexOfFirstItem, indexOfLastItem)
-    : [];
+  const currentCars = sortedCars.slice(indexOfFirstItem, indexOfLastItem);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -222,12 +247,12 @@ export default function Cars({ cars }) {
                     <div className="flex items-center gap-2">
                       <div className="bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20">
                         <span className="text-white font-bold text-base">
-                          AED {car.discountedPrice || car.originalPrice}
+                          AED {formatPrice(car.discountedPrice || car.originalPrice)}
                         </span>
                       </div>
                       {car.discountedPrice && (
                         <span className="text-white/70 line-through text-xs">
-                          AED {car.originalPrice}
+                          AED {formatPrice(car.originalPrice)}
                         </span>
                       )}
                     </div>
