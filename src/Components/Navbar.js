@@ -22,11 +22,11 @@ export default function Navbar({ page }) {
 
   const navLinks = [
     { name: "Home", to: "/", key: "home" },
-    { name: "About", to: "/about", key: "about" },
-    { name: "Sell", to: "/sell", key: "sell" },
     { name: "Buy", to: "/buy", key: "buy" },
-    { name: "Blogs", to: "/blogs", key: "blog" },
+    { name: "Sell", to: "/sell", key: "sell" },
     { name: "Finance", to: "/finance", key: "finance" },
+    { name: "Blogs", to: "/blogs", key: "blog" },
+    { name: "About", to: "/about", key: "about" },
     { name: "Contact", to: "/contact-us", key: "contact" },
   ];
 

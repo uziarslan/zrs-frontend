@@ -2,7 +2,6 @@ import React from "react";
 import logo from "../Assets/images/logo2.png";
 import location from "../Assets/icons/location.svg";
 import phone from "../Assets/icons/phone.svg";
-import youtube from "../Assets/icons/youtube.svg";
 import tiktok from "../Assets/icons/tiktok.svg";
 import linkedin from "../Assets/icons/linkedin.svg";
 import instagram from "../Assets/icons/instagram.svg";
@@ -11,11 +10,10 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   const socialLinks = [
-    { icon: youtube, name: "YouTube", url: "#" },
-    { icon: tiktok, name: "TikTok", url: "#" },
-    { icon: linkedin, name: "LinkedIn", url: "#" },
-    { icon: instagram, name: "Instagram", url: "#" },
-    { icon: facebook, name: "Facebook", url: "#" },
+    { icon: tiktok, name: "TikTok", url: "https://www.tiktok.com/@zrs.cars.trading?_r=1&_t=ZS-932VW1ZOuck" },
+    { icon: linkedin, name: "LinkedIn", url: "https://www.linkedin.com/company/zrs-cars-trading/?viewAsMember=true" },
+    { icon: instagram, name: "Instagram", url: "https://www.instagram.com/zrscarstrading/" },
+    { icon: facebook, name: "Facebook", url: "https://www.facebook.com/zrscarstrading" },
   ];
 
   const quickLinks = [
